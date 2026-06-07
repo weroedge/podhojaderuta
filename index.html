@@ -375,20 +375,50 @@
             .sidebar {
                 width: 100%;
                 height: auto;
-                position: relative;
+                position: fixed; /* Menú fijo arriba */
+                top: 0;
+                left: 0;
+                z-index: 1000;
                 border-right: none;
                 border-bottom: 1px solid var(--border-light);
-                padding: 20px;
+                padding: 12px 15px;
+                background-color: #0e1424;
+                gap: 10px;
+            }
+
+            .logo-section {
+                margin-bottom: 10px;
+                flex-direction: row;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .logo-section span {
+                display: none; /* Ocultar texto secundario para ahorrar espacio */
             }
 
             .nav-menu {
-                display: grid;
-                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-                gap: 10px;
+                flex-direction: row; /* Horizontal */
+                overflow-x: auto; /* Scroll horizontal si no cabe */
+                padding-bottom: 5px;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none; /* Ocultar scrollbar en Firefox */
+            }
+
+            .nav-menu::-webkit-scrollbar {
+                display: none; /* Ocultar scrollbar en Chrome/Safari */
+            }
+
+            .nav-item {
+                white-space: nowrap; /* Evitar que el texto rompa línea */
+                padding: 8px 14px;
+                font-size: 13px;
+                flex-shrink: 0;
             }
 
             .main-content {
                 margin-left: 0;
+                margin-top: 130px; /* Espacio para el menú fijo */
                 padding: 20px;
                 width: 100%;
                 box-sizing: border-box;
@@ -404,6 +434,10 @@
         }
 
         @media (max-width: 768px) {
+            .main-content {
+                margin-top: 120px;
+            }
+            
             .header-info h1 {
                 font-size: 22px;
             }
@@ -419,28 +453,19 @@
             .card {
                 padding: 16px;
             }
-
-            .nav-menu {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .nav-item {
-                font-size: 13px;
-                padding: 10px;
-            }
         }
 
         @media (max-width: 480px) {
-            .nav-menu {
-                grid-template-columns: 1fr;
-            }
-
             .sidebar {
-                padding: 15px;
+                padding: 10px;
             }
 
             .logo-section h2 {
-                font-size: 18px;
+                font-size: 16px;
+            }
+            
+            .main-content {
+                margin-top: 110px;
             }
         }
     </style>
