@@ -397,36 +397,90 @@ const hardcodedDetails = {
     `,
     'Horarios': `
         <div class="card">
-            <div class="card-title">⏱️ Planificación Horaria de la Producción (Día a Día)</div>
+            <div class="card-title">⏱️ Planificación Detallada de Producción Artística</div>
+            <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 20px;">Cronograma completo de montaje técnico, ensayos y jornadas de show para ZETAK en San Mamés.</p>
+            
             <div class="table-responsive">
                 <table>
                     <thead>
                         <tr>
-                            <th>Fecha (Jornada)</th>
                             <th>Horario</th>
-                            <th>Operación / Tarea</th>
-                            <th>Proveedor Responsable</th>
+                            <th>Empresa</th>
+                            <th>Trabajo / Operación</th>
+                            <th>Personal (Hands)</th>
+                            <th>Maquinaria / Notas</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr style="background-color: rgba(56, 189, 248, 0.03);">
-                            <td><strong>15/06/2026 (Día 8)</strong></td>
-                            <td>08:00 - 21:00<br>10:00 - 21:00<br>12:00 - 16:00</td>
-                            <td>Montaje de sonido, luces y pantallas LED de ZETAK.<br>Montaje de cañones pirotécnicos en provocador y frontal.<br>Montaje e ingeniería de la plataforma variable en pasarela.</td>
-                            <td>Fluge Euskadi S.L.<br>Sukubo S.L.<br>Pascualin Estructures</td>
-                        </tr>
-                        <tr style="background-color: rgba(46, 204, 113, 0.08);">
-                            <td><strong>19/06/2026 (Día 12)</strong></td>
-                            <td>20:30 - 22:30<br><strong>22:30 - 01:15</strong></td>
-                            <td>Apertura de puertas de público.<br><strong>EJECUCIÓN DÍA 1 DE CONCIERTO ZETAK (MITOAROA III)</strong></td>
-                            <td>Sureuskadi / Vans & Roll<br><strong>ZETAK / Vans & Roll</strong></td>
-                        </tr>
-                        <tr style="background-color: rgba(46, 204, 113, 0.08);">
-                            <td><strong>20/06/2026 (Día 13)</strong></td>
-                            <td>20:00 - 22:00<br><strong>22:00 - 23:30</strong></td>
-                            <td>Apertura de puertas (Show Principal).<br><strong>EJECUCIÓN DÍA 2 DE CONCIERTO ZETAK (MITOAROA III)</strong></td>
-                            <td>Sureuskadi / Vans & Roll<br><strong>ZETAK / Vans & Roll</strong></td>
-                        </tr>
+                        <tr style="background-color: rgba(56, 189, 248, 0.05);"><td colspan="5" style="text-align: center; font-weight: bold; color: var(--accent-blue);">MIÉRCOLES 10</td></tr>
+                        <tr><td>18:00 - 20:00</td><td>Sukubo</td><td>Montaje tubo árbol</td><td>No</td><td>Tijera 8m altura trabajo</td></tr>
+
+                        <tr style="background-color: rgba(56, 189, 248, 0.05);"><td colspan="5" style="text-align: center; font-weight: bold; color: var(--accent-blue);">LUNES 15</td></tr>
+                        <tr><td>08:00 - 14:00</td><td>Remosa</td><td>Montaje suelo PVC provocador + pasarela REA</td><td>No</td><td>Toro para descarga</td></tr>
+                        <tr><td>09:00 - 21:00</td><td>Producción Zetak</td><td>Coordinación montaje</td><td>2 pax retén producción</td><td>-</td></tr>
+                        <tr><td>09:00 - 21:00</td><td>Técnico RF banda</td><td>Montaje fibras y RF</td><td>No</td><td>-</td></tr>
+                        <tr><td>09:00 - 21:00</td><td>Streaming on set</td><td>Montaje RF</td><td>No</td><td>Toro descarga</td></tr>
+                        <tr><td>10:00 - 21:00</td><td>Cittadini</td><td>Montaje lásers</td><td>2 pax (10:00-12:00)</td><td>Toro descarga</td></tr>
+                        <tr><td>12:00 - 16:00</td><td>Arte</td><td>Montaje pasarela variable</td><td>2 pax</td><td>-</td></tr>
+                        <tr><td>15:00 - 21:00</td><td>Técnicos sonido banda</td><td>Supervisión montaje</td><td>No</td><td>-</td></tr>
+                        <tr><td>16:00 - 21:00</td><td>Remosa</td><td>Marcaje Suelo escenario / PVC</td><td>No</td><td>-</td></tr>
+                        <tr><td>16:00 - 21:00</td><td>Operador luces banda</td><td>Supervisión montaje y testeo equipos</td><td>No</td><td>-</td></tr>
+                        <tr><td>16:00 - 21:00</td><td>Toboggan</td><td>Montaje cámaras + fibra + controles</td><td>4 hands (16:00-16:30)</td><td>-</td></tr>
+                        <tr><td>16:00 - 19:00</td><td>Eyesberg</td><td>Montaje servidores</td><td>2 hands (16:30-17:00)</td><td>-</td></tr>
+
+                        <tr style="background-color: rgba(56, 189, 248, 0.05);"><td colspan="5" style="text-align: center; font-weight: bold; color: var(--accent-blue);">MARTES 16</td></tr>
+                        <tr><td>09:00 - 21:00</td><td>Sukubo</td><td>Montaje uflames</td><td>2 pax retén producción</td><td>-</td></tr>
+                        <tr><td>09:00 - 21:00</td><td>Producción Zetak</td><td>Coordinación montaje</td><td>2 pax retén</td><td>Toro descarga</td></tr>
+                        <tr><td>10:00 - 12:00</td><td>Zero</td><td>Layher grada</td><td>2 pax retén</td><td>Toro descarga</td></tr>
+                        <tr><td>11:00 - 14:00</td><td>Call&Play</td><td>Escaleras grada</td><td>2 pax retén</td><td>Toro descarga</td></tr>
+                        <tr><td>12:00 - 15:00</td><td>Remosa</td><td>Soporte técnico suelo</td><td>No</td><td>-</td></tr>
+                        <tr><td>15:00 - 18:00</td><td>Arte</td><td>Forrar laterales grada</td><td>No</td><td>-</td></tr>
+                        <tr><td>15:00 - 19:00</td><td>Remosa</td><td>PVC escenario + forrar escaleras + grada + tarimas</td><td>No</td><td>-</td></tr>
+                        <tr><td>09:00 - 17:00</td><td>Toboggan</td><td>Continúa montaje cámaras</td><td>No</td><td>-</td></tr>
+                        <tr><td>16:00 - 21:00</td><td>Fluge</td><td>Chequeo líneas (canales extensos)</td><td>No</td><td>-</td></tr>
+                        <tr><td>16:00 - 21:00</td><td>REA</td><td>Montaje controles</td><td>No</td><td>-</td></tr>
+                        <tr><td>18:00 - 19:00</td><td>Backline Zetak</td><td>Montaje backline</td><td>2 pax (17:30-19:30)</td><td>-</td></tr>
+                        <tr><td>21:00 - 23:00</td><td>Arte</td><td>Colocación alto horno en escenario</td><td>No</td><td>Manitou</td></tr>
+                        <tr class="status-orange"><td>21:00 - 06:00</td><td>Show banda</td><td>Pruebas iluminación + pantallas + efectos + cámaras</td><td>No</td><td>Jornada nocturna</td></tr>
+
+                        <tr style="background-color: rgba(56, 189, 248, 0.05);"><td colspan="5" style="text-align: center; font-weight: bold; color: var(--accent-blue);">MIÉRCOLES 17</td></tr>
+                        <tr><td>10:00 - 14:00</td><td>Cittadini</td><td>Montaje lásers variable/escenario/provocador</td><td>2 pax retén</td><td>-</td></tr>
+                        <tr><td>15:00 - 24:00</td><td>Producción Zetak</td><td>Coordinación general</td><td>2 pax retén</td><td>-</td></tr>
+                        <tr><td>15:00 - 04:00</td><td>Ensayos</td><td>Ensayos generales</td><td>No</td><td>-</td></tr>
+                        <tr><td>24:00 - 24:30</td><td>Cittadini</td><td>Prueba láser vertical</td><td>No</td><td>-</td></tr>
+
+                        <tr style="background-color: rgba(56, 189, 248, 0.05);"><td colspan="5" style="text-align: center; font-weight: bold; color: var(--accent-blue);">JUEVES 18</td></tr>
+                        <tr><td>15:00 - 24:00</td><td>Producción Zetak</td><td>Coordinación general</td><td>2 pax retén</td><td>-</td></tr>
+                        <tr><td>15:00 - 04:00</td><td>Ensayos</td><td>Ensayos generales</td><td>No</td><td>-</td></tr>
+                        <tr><td>24:00 - 24:30</td><td>Cittadini</td><td>Prueba láser vertical</td><td>No</td><td>-</td></tr>
+
+                        <tr style="background-color: rgba(46, 204, 113, 0.1);"><td colspan="5" style="text-align: center; font-weight: bold; color: var(--success);">VIERNES 19 - SHOW DAY 1</td></tr>
+                        <tr><td>12:00 - 19:00</td><td>-</td><td>Chequeo equipos + pruebas</td><td>No</td><td>-</td></tr>
+                        <tr><td>17:00 - 01:00</td><td>Producción Zetak</td><td>Gestión de producción</td><td>2 pax retén</td><td>-</td></tr>
+                        <tr><td>20:30 - 22:30</td><td>-</td><td>Apertura de Puertas</td><td>-</td><td>-</td></tr>
+                        <tr style="font-weight: bold;"><td>22:30 - 01:00</td><td>Banda</td><td>SHOW ZETAK</td><td>-</td><td>-</td></tr>
+
+                        <tr style="background-color: rgba(46, 204, 113, 0.1);"><td colspan="5" style="text-align: center; font-weight: bold; color: var(--success);">SÁBADO 20 - SHOW DAY 2</td></tr>
+                        <tr><td>12:00 - 19:00</td><td>-</td><td>Chequeo equipos + pruebas</td><td>No</td><td>-</td></tr>
+                        <tr><td>17:00 - 00:00</td><td>Producción Zetak</td><td>Gestión de producción</td><td>2 pax retén</td><td>-</td></tr>
+                        <tr><td>20:30 - 22:30</td><td>-</td><td>Apertura de Puertas</td><td>-</td><td>-</td></tr>
+                        <tr style="font-weight: bold;"><td>22:30 - 01:00</td><td>Banda</td><td>SHOW ZETAK</td><td>-</td><td>-</td></tr>
+
+                        <tr style="background-color: rgba(231, 76, 60, 0.1);"><td colspan="5" style="text-align: center; font-weight: bold; color: var(--danger);">DOMINGO 21 - DESMONTAJE</td></tr>
+                        <tr><td>24:00 - 06:00</td><td>Zetak producción</td><td>Coordinación desmontaje</td><td>2 pax retén</td><td>-</td></tr>
+                        <tr><td>24:30 - 02:00</td><td>Call & Play</td><td>Desmontaje escaleras grada</td><td>2 pax (24:00-02:00)</td><td>1 toro carga</td></tr>
+                        <tr><td>24:30 - 01:30</td><td>Backline Zetak</td><td>Desmontaje backline</td><td>2 pax (01:00-03:00)</td><td>-</td></tr>
+                        <tr><td>24:30 - 01:30</td><td>Cittadini</td><td>Desmontaje lásers variable</td><td>No</td><td>-</td></tr>
+                        <tr><td>24:30 - 02:00</td><td>REA</td><td>Desmontaje REA</td><td>No</td><td>-</td></tr>
+                        <tr><td>01:00 - 08:00</td><td>Toboggan</td><td>Desmontaje cámaras</td><td>2 pax para carga</td><td>-</td></tr>
+                        <tr><td>01:00 - 04:00</td><td>Streaming on set</td><td>Desmontaje RF</td><td>No</td><td>-</td></tr>
+                        <tr><td>01:30 - 03:00</td><td>Arte</td><td>Desmontaje pasarela variable</td><td>No</td><td>-</td></tr>
+                        <tr><td>01:30 - 02:00</td><td>Arte</td><td>Bajar el alto horno</td><td>No</td><td>-</td></tr>
+                        <tr><td>01:30 - 03:30</td><td>Zero</td><td>Desmontaje layher grada</td><td>2 pax (01:30-03:30)</td><td>1 toro carga</td></tr>
+                        <tr><td>02:00 - 04:00</td><td>Cittadini</td><td>Desmontaje láser 600w</td><td>2 pax (02:00-04:00)</td><td>1 toro carga</td></tr>
+
+                        <tr style="background-color: rgba(56, 189, 248, 0.05);"><td colspan="5" style="text-align: center; font-weight: bold; color: var(--accent-blue);">LUNES 22</td></tr>
+                        <tr><td>TBC</td><td>-</td><td>Finalización desmontaje artístico</td><td>-</td><td>A confirmar</td></tr>
                     </tbody>
                 </table>
             </div>
