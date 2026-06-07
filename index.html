@@ -1,0 +1,1701 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dossier Operativo: ZETAK @ San Mamés</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0b0f19;
+            --card-bg: #151d30;
+            --accent-blue: #38bdf8;
+            --accent-purple: #818cf8;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-light: #223049;
+            --success: #2ecc71;
+            --warning: #f1c40f;
+            --danger: #e74c3c;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        .layout-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navegación */
+        .sidebar {
+            width: 280px;
+            background-color: #0e1424;
+            border-right: 1px solid var(--border-light);
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            position: fixed;
+            height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .logo-section {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-bottom: 20px;
+        }
+
+        .logo-section h2 {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo-section span {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .nav-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 8px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .nav-item:hover {
+            background-color: rgba(56, 189, 248, 0.08);
+            color: var(--text-main);
+        }
+
+        .nav-item.active {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(129, 204, 248, 0.05));
+            border-color: rgba(56, 189, 248, 0.3);
+            color: var(--accent-blue);
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 320px;
+            padding: 40px;
+            width: calc(100% - 380px);
+        }
+
+        .header-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 20px;
+        }
+
+        .header-info h1 {
+            font-size: 28px;
+            margin: 0 0 5px 0;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .header-info p {
+            color: var(--text-muted);
+            margin: 0;
+            font-size: 14px;
+        }
+
+        /* Contenido por Pestaña */
+        .tab-panel {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Tarjetas Informativas */
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: var(--accent-blue);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 10px;
+        }
+
+        /* Estilo de la Sección de Bienvenida */
+        .welcome-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        .welcome-hero {
+            background: linear-gradient(135deg, #1b2640, #131b30);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            padding: 35px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .welcome-hero h3 {
+            font-size: 24px;
+            margin: 0;
+            background: linear-gradient(90deg, #38bdf8, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .alert-box {
+            background-color: rgba(231, 76, 60, 0.1);
+            border: 1px solid rgba(231, 76, 60, 0.3);
+            border-left: 5px solid var(--danger);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .alert-box h4 {
+            margin: 0 0 8px 0;
+            color: #f1948a;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .alert-box p {
+            margin: 0;
+            color: var(--text-main);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* FAQ Acordeón */
+        .faq-item {
+            background-color: rgba(30, 41, 59, 0.5);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-trigger {
+            padding: 16px 20px;
+            font-weight: 500;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            background-color: rgba(30, 41, 59, 0.8);
+        }
+
+        .faq-trigger:hover {
+            background-color: rgba(56, 189, 248, 0.05);
+            color: var(--accent-blue);
+        }
+
+        .faq-content {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s cubic-bezier(0, 1, 0, 1), padding 0.3s ease;
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            background-color: #0f172a;
+        }
+
+        .faq-item.open .faq-content {
+            max-height: 300px;
+            padding: 16px 20px;
+        }
+
+        /* Tablas */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            border-radius: 8px;
+            border: 1px solid var(--border-light);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 13.5px;
+        }
+
+        th {
+            background-color: #121826;
+            padding: 14px 16px;
+            font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            border-bottom: 2px solid var(--border-light);
+        }
+
+        td {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-main);
+        }
+
+        tr:hover {
+            background-color: rgba(255,255,255,0.02);
+        }
+
+        /* Badges y Chips */
+        .badge {
+            display: inline-block;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-size: 10.5px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .badge.blue { background-color: rgba(56, 189, 248, 0.15); color: var(--accent-blue); }
+        .badge.purple { background-color: rgba(129, 140, 248, 0.15); color: var(--accent-purple); }
+        .badge.green { background-color: rgba(46, 204, 113, 0.15); color: var(--success); }
+        .badge.orange { background-color: rgba(241, 196, 15, 0.15); color: var(--warning); }
+        .badge.red { background-color: rgba(231, 76, 60, 0.15); color: var(--danger); }
+
+        /* Lista de Contactos por Días */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .contact-item {
+            background-color: rgba(30, 41, 59, 0.4);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 15px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .contact-item:hover {
+            border-color: var(--accent-blue);
+            background-color: rgba(56, 189, 248, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .contact-name {
+            font-weight: 600;
+            font-size: 14.5px;
+            color: var(--text-main);
+        }
+
+        .contact-role {
+            font-size: 12.5px;
+            color: var(--accent-blue);
+            font-weight: 500;
+        }
+
+        .contact-info {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 5px;
+        }
+
+        /* Vista de Peticiones del Email */
+        tr.status-green { border-left: 3px solid var(--success); background-color: rgba(46, 204, 113, 0.04); }
+        tr.status-orange { border-left: 3px solid var(--warning); background-color: rgba(241, 196, 15, 0.04); }
+        tr.status-red { border-left: 3px solid var(--danger); background-color: rgba(231, 76, 60, 0.04); }
+    </style>
+</head>
+<body>
+
+<div class="layout-container">
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <div class="logo-section">
+            <h2>ZETAK SAN MAMÉS</h2>
+            <span>Dossier de Operaciones</span>
+        </div>
+
+        <nav class="nav-menu">
+            <div class="nav-item active" onclick="switchTab('inicio')">Introducción y bienvenida</div>
+            <div class="nav-item" onclick="switchTab('artista')">🎤 Ficha del Artista</div>
+            <div class="nav-item" onclick="switchTab('contactos')">📞 Contactos y Staff</div>
+            <div class="nav-item" onclick="switchTab('horarios')">⏱️ Cronograma Horario</div>
+            <div class="nav-item" onclick="switchTab('escenario')">📐 Ficha Técnica Escenario</div>
+            <div class="nav-item" onclick="switchTab('planos')">🗺️ Planos Técnicos</div>
+            <div class="nav-item" onclick="switchTab('proveedores')">🤝 Guía de Proveedores</div>
+            <div class="nav-item" onclick="switchTab('parking')">🅿️ Parking y Tránsito</div>
+            <div class="nav-item" onclick="switchTab('hospitalidad')">🛎️ Hospitalidad</div>
+            <div class="nav-item" onclick="switchTab('logistica')">🚚 Logística</div>
+        </nav>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+        <div class="header-bar">
+            <div class="header-info">
+                <h1 id="page-title">Introducción y bienvenida</h1>
+                <p>Aspectos básicos del evento</p>
+            </div>
+        </div>
+
+        <!-- TAB: INICIO / BIENVENIDA -->
+        <div id="tab-inicio" class="tab-panel active">
+            <div class="welcome-grid">
+                <div class="welcome-hero">
+                    <h3>¡Bienvenido al Equipo de Producción de San Mamés!</h3>
+                    <p>Estás integrado en la producción técnica y de logística para los espectáculos en directo de <strong>ZETAK</strong> en el Estadio San Mamés (Bilbao).</p>
+                    <p>Este dossier centraliza toda la información técnica, planos, contactos y horarios aprobados para que dispongas de una introducción rápida y puedas operar de forma segura y coordinada en el recinto.</p>
+                    
+                    <div class="alert-box">
+                        <h4>🚨 REGLA CRÍTICA DE ACCESO (LOGÍSTICA)</h4>
+                        <p>Tanto el personal técnico, artistas, staff local, como la totalidad del transporte de mercancías, carga y descarga tienen un <strong>único punto de acceso oficial y obligatorio</strong> al estadio:</p>
+                        <p style="margin-top: 10px; font-weight: 600; color: #fff;">📍 Túnel de Mercancías - Ubicado exclusivamente en la Calle Ventosa.</p>
+                        <p style="font-size: 13px; color: var(--text-muted); margin-top: 5px;">Será obligatorio presentar DNI en el primer acceso para poder acreditarse; si la documentación aportada no ha sido aprobada previamente, el acceso será denegado. No se autorizará el ingreso de personal por las puertas de público del estadio.</p>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-bottom: 0;">
+                    <h4 style="margin-top:0; color: var(--accent-blue);">📌 Puntos Clave del Evento</h4>
+                    <p style="font-size:14px; margin: 10px 0;"><strong style="color:var(--text-muted)">Fechas del Show:</strong><br> Viernes 19 y Sábado 20 de Junio de 2026</p>
+                    <p style="font-size:14px; margin: 10px 0;"><strong style="color:var(--text-muted)">Aforo Máximo Estimado:</strong><br> 40.000 pax aprox por jornada</p>
+                    <p style="font-size:14px; margin: 10px 0;"><strong style="color:var(--text-muted)">Ubicación de Oficinas:</strong><br> Sala de audiovisuales (entrada por la puerta de la derecha justo antes de salir al campo por el túnel de acceso).</p>
+                    <p style="font-size:14px; margin: 10px 0;"><strong style="color:var(--text-muted)">Normativa de Seguridad:</strong><br> Casco, calzado de seguridad y chaleco reflectante obligatorios (EPIS) durante todas las fases de montaje y desmontaje en campo.</p>
+                    
+                    <div style="margin-top: 20px;">
+                        <p style="font-size: 13px; color: var(--accent-blue); margin-bottom: 10px; font-weight: 600;">🗺️ Plano de Accesos y Zonas Prohibidas:</p>
+                        <div style="width: 100%; aspect-ratio: 1.414; position: relative; overflow: hidden; border-radius: 8px; border: 1px solid var(--border-light); background: #2a2a2e;">
+                            <iframe src="../ARTIST/PLANOS/PDFs/ZETAK%20Implantacion%20FINAL%202105-Implantacion%20(Acceso%20personal).pdf#toolbar=0&navpanes=0&scrollbar=0" 
+                                    style="width: 100%; height: 100%; border: none;">
+                            </iframe>
+                        </div>
+                        <div style="margin-top: 8px; display: flex; justify-content: flex-end;">
+                            <a href="../ARTIST/PLANOS/PDFs/ZETAK%20Implantacion%20FINAL%202105-Implantacion%20(Acceso%20personal).pdf" target="_blank" class="badge blue" style="text-decoration: none; font-size: 11px;">🔍 Ampliar plano de accesos</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 30px;">
+                <div class="card-title">❓ Preguntas Frecuentes (FAQ Básica)</div>
+                
+                <div class="faq-item">
+                    <div class="faq-trigger" onclick="toggleFaq(this)">¿Dónde y cómo recojo mi acreditación? <span>➕</span></div>
+                    <div class="faq-content">La pulsera o pase de acreditación se puede recoger en el punto de control del túnel de mercancías después de haber mostrado el DNI y certificar que se es apto para el acceso tras la validación de la documentación en la plataforma CAE.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-trigger" onclick="toggleFaq(this)">¿Cómo funciona el catering y comedor? <span>➕</span></div>
+                    <div class="faq-content">El catering oficial de la producción está gestionado por <strong>Cuchara de Palo</strong>. Se ha habilitado una zona de comedor interior en la planta cero del estadio justo detrás del escenario en la parte este. Los horarios de servicio son de 13:00 a 16:00 (comida) y de 20:00 a 23:00 (cena), accesibles únicamente con ticket el cual, si te aplica, te dará tu responsable de equipo.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-trigger" onclick="toggleFaq(this)">¿Tengo un espacio donde dejar mis cosas? <span>➕</span></div>
+                    <div class="faq-content">Dirígete a tu responsable de equipo para que te diga dónde está el espacio asignado para dejar tus pertenencias personales.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-trigger" onclick="toggleFaq(this)">¿Puedo llevar mi vehículo? <span>➕</span></div>
+                    <div class="faq-content">Lamentablemente las plazas de aparcamiento son limitadas, así que si no has recibido confirmación de poder aparcar dentro del estadio, puedes usar los parkings públicos de la zona como el del Intermodal.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-trigger" onclick="toggleFaq(this)">¿Y si tengo que descargar mercancías? <span>➕</span></div>
+                    <div class="faq-content">Debes hacer una solicitud a tu responsable con el día en el que accederás a descargar, tipo de vehículo, matrícula, nombre y teléfono del conductor. Solo podrás acceder si has recibido confirmación.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB: ARTISTA -->
+        <div id="tab-artista" class="tab-panel">
+            <div class="card">
+                <div class="card-title">🎤 Contacto Artístico</div>
+                <div class="contact-grid">
+                    <a href="tel:+34665728312" class="contact-item">
+                        <span class="contact-name">Patricia Lorenzo García</span>
+                        <span class="contact-role">Production Manager ZETAK</span>
+                        <span class="contact-info">📧 lorenzogarciapatricia@gmail.com<br>📱 +34 665 728 312</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">⏱️ Horarios de Producción Artística (Crew ZETAK)</div>
+                <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 20px;">
+                    Cronograma completo y detallado para el personal del artista, personal técnico de soporte, y desmontaje operativo en San Mamés (10 al 22 de Junio).
+                </p>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 120px;">Horario</th>
+                                <th>Actividad / Detalle</th>
+                                <th>Responsable</th>
+                                <th>Recursos / Maquinaria</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Miércoles 10 de Junio -->
+                            <tr style="background-color: rgba(56, 189, 248, 0.05); border-bottom: 2px solid var(--border-light);">
+                                <td colspan="4" style="font-weight: 700; color: var(--accent-blue); padding: 12px 16px;">
+                                    📅 Miércoles 10 de Junio de 2026
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600; color: var(--text-muted);">TBC</td>
+                                <td>Montaje tubo árbol</td>
+                                <td><span class="badge blue">Sukubo</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">🛠️ Tijera 8m altura trabajo</td>
+                            </tr>
+
+                            <!-- Lunes 15 de Junio -->
+                            <tr style="background-color: rgba(56, 189, 248, 0.05); border-top: 15px solid transparent; border-bottom: 2px solid var(--border-light);">
+                                <td colspan="4" style="font-weight: 700; color: var(--accent-blue); padding: 12px 16px;">
+                                    📅 Lunes 15 de Junio de 2026
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">09:00 - 21:00</td>
+                                <td>Producción Zetak</td>
+                                <td><span class="badge blue">Producción Zetak</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">👥 2 pax retén producción</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">08:00 - 14:00</td>
+                                <td>Montaje suelo PVC provocador + pasarela REA</td>
+                                <td><span class="badge blue">Remosa</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">🚜 Toro para descarga</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">09:00 - 21:00</td>
+                                <td>Montaje fibras y RF. El proveedor de Fluge de material de RF irá con él</td>
+                                <td><span class="badge blue">Técnico RF banda</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">09:00 - 21:00</td>
+                                <td>Montaje RF</td>
+                                <td><span class="badge blue">Streaming on set</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">🚜 Toro descarga</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">10:00 - 21:00</td>
+                                <td>Montaje lásers</td>
+                                <td><span class="badge blue">Cittadini</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">👥 2 pax 10:00 - 12:00 | 🚜 Toro descarga</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">12:00 - 16:00</td>
+                                <td>Montaje pasarela variable</td>
+                                <td><span class="badge blue">Arte</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">👥 2 pax</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">16:00 - 19:00</td>
+                                <td>Montaje focos + lásers pasarela variable</td>
+                                <td><span class="badge blue">Cittadini + Fluge</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">15:00 - 21:00</td>
+                                <td>Supervisión montaje</td>
+                                <td><span class="badge blue">Técnicos sonido banda</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">16:00 - 21:00</td>
+                                <td>Marcaje Suelo escenario y si se puede tirar PVC escenario si están los puentes arriba</td>
+                                <td><span class="badge blue">Remosa</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">16:00 - 21:00</td>
+                                <td>Supervisión montaje y testeo de equipos (si no está montado el control él lleva el suyo)</td>
+                                <td><span class="badge blue">Operador luces banda</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">16:00 - 21:00</td>
+                                <td>Montaje cámaras + fibra + controles</td>
+                                <td><span class="badge blue">Toboggan</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">👥 4 hands 16:00 - 16:30</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">16:00 - 19:00</td>
+                                <td>Montaje servidores</td>
+                                <td><span class="badge blue">Eyesberg</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">👥 2 hands 16:30 - 17:00</td>
+                            </tr>
+
+                            <!-- Martes 16 de Junio -->
+                            <tr style="background-color: rgba(56, 189, 248, 0.05); border-top: 15px solid transparent; border-bottom: 2px solid var(--border-light);">
+                                <td colspan="4" style="font-weight: 700; color: var(--accent-blue); padding: 12px 16px;">
+                                    📅 Martes 16 de Junio de 2026
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">10:00 - 21:00</td>
+                                <td>Producción Zetak</td>
+                                <td><span class="badge blue">Producción Zetak</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">👥 2 pax retén de producción</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">10:00 - 12:00</td>
+                                <td>Layher grada</td>
+                                <td><span class="badge blue">Zero</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">👥 2 pax (mi retén de producción) | 🚜 Toro descarga</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">11:00 - 14:00</td>
+                                <td>Escaleras grada</td>
+                                <td><span class="badge blue">Call&Play</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">👥 2 pax (mi retén de producción) | 🚜 Toro descarga</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">15:00 - 18:00</td>
+                                <td>Forrar laterales grada</td>
+                                <td><span class="badge blue">Arte</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">12:00 - 15:00</td>
+                                <td>Posibilidad dos pax suyos vengan antes</td>
+                                <td><span class="badge blue">Remosa</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">15:00 - 19:00</td>
+                                <td>PVC escenario + forrar escaleras + grada + tarimas</td>
+                                <td><span class="badge blue">Remosa</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">09:00 - 17:00</td>
+                                <td>Continua montaje</td>
+                                <td><span class="badge blue">Toboggan</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">18:00 - 19:00</td>
+                                <td>Montaje backline</td>
+                                <td><span class="badge blue">Backline Zetak</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">👥 2 pax 17:30- 19:30</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">16:00 - 21:00</td>
+                                <td>Chequeo líneas (son muchos canales, si puede ser antes de las 18:00 mejor)</td>
+                                <td><span class="badge blue">Fluge</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">16:00 - 21:00</td>
+                                <td>Montaje controles</td>
+                                <td><span class="badge blue">REA</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">21:00 - 23:00</td>
+                                <td>Colocación alto horno en escenario</td>
+                                <td><span class="badge blue">Arte</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">🚜 Manitou</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">21:00 - 06:00</td>
+                                <td>Pruebas iluminación + pantallas + efectos + cámaras</td>
+                                <td><span class="badge blue">Show banda</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">23:00 - 06:00</td>
+                                <td>Pruebas láser</td>
+                                <td><span class="badge blue">Cittadini</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+
+                            <!-- Miércoles 17 de Junio -->
+                            <tr style="background-color: rgba(56, 189, 248, 0.05); border-top: 15px solid transparent; border-bottom: 2px solid var(--border-light);">
+                                <td colspan="4" style="font-weight: 700; color: var(--accent-blue); padding: 12px 16px;">
+                                    📅 Miércoles 17 de Junio de 2026
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">15:00 - 24:00</td>
+                                <td>Producción Zetak</td>
+                                <td><span class="badge blue">Producción Zetak</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">👥 2 pax retén de producción</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">15:00 - 04:00</td>
+                                <td>Ensayos generales</td>
+                                <td colspan="2" style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+
+                            <!-- Jueves 18 de Junio -->
+                            <tr style="background-color: rgba(56, 189, 248, 0.05); border-top: 15px solid transparent; border-bottom: 2px solid var(--border-light);">
+                                <td colspan="4" style="font-weight: 700; color: var(--accent-blue); padding: 12px 16px;">
+                                    📅 Jueves 18 de Junio de 2026
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">15:00 - 24:00</td>
+                                <td>Producción Zetak</td>
+                                <td><span class="badge blue">Producción Zetak</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">👥 2 pax retén de producción</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">15:00 - 04:00</td>
+                                <td>Ensayos generales</td>
+                                <td colspan="2" style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+
+                            <!-- Viernes 19 de Junio (SHOW DAY 1) -->
+                            <tr style="background-color: rgba(46, 204, 113, 0.1); border-top: 15px solid transparent; border-bottom: 2px solid var(--success);">
+                                <td colspan="4" style="font-weight: 700; color: var(--success); padding: 12px 16px;">
+                                    📅 Viernes 19 de Junio de 2026 — 🌟 CONCIERTO DÍA 1
+                                </td>
+                            </tr>
+                            <tr style="background-color: rgba(46, 204, 113, 0.02);">
+                                <td style="font-weight: 600;">12:00 - 19:00</td>
+                                <td>Chequeo equipos + pruebas</td>
+                                <td colspan="2" style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+                            <tr style="background-color: rgba(46, 204, 113, 0.02);">
+                                <td style="font-weight: 600;">17:00 - 01:00</td>
+                                <td>Producción Zetak</td>
+                                <td><span class="badge blue">Producción Zetak</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">👥 2 pax retén de producción</td>
+                            </tr>
+                            <tr style="background-color: rgba(46, 204, 113, 0.02);">
+                                <td style="font-weight: 600;">20:30 - 22:30</td>
+                                <td>Puertas</td>
+                                <td colspan="2" style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+                            <tr style="background-color: rgba(46, 204, 113, 0.05); font-weight: 600;">
+                                <td style="color: var(--success);">22:30 - 01:00</td>
+                                <td style="color: #fff; font-size: 14px;">🎤 SHOW</td>
+                                <td colspan="2" style="color: var(--success); font-size: 12px;">🚀 Show Oficial - Mitoaroa III</td>
+                            </tr>
+
+                            <!-- Sábado 20 de Junio (SHOW DAY 2) -->
+                            <tr style="background-color: rgba(46, 204, 113, 0.1); border-top: 15px solid transparent; border-bottom: 2px solid var(--success);">
+                                <td colspan="4" style="font-weight: 700; color: var(--success); padding: 12px 16px;">
+                                    📅 Sábado 20 de Junio de 2026 — 🌟 CONCIERTO DÍA 2
+                                </td>
+                            </tr>
+                            <tr style="background-color: rgba(46, 204, 113, 0.02);">
+                                <td style="font-weight: 600;">12:00 - 19:00</td>
+                                <td>Chequeo equipos + pruebas</td>
+                                <td colspan="2" style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+                            <tr style="background-color: rgba(46, 204, 113, 0.02);">
+                                <td style="font-weight: 600;">17:00 - 24:00</td>
+                                <td>Producción Zetak</td>
+                                <td><span class="badge blue">Producción Zetak</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">👥 2 pax retén de producción</td>
+                            </tr>
+                            <tr style="background-color: rgba(46, 204, 113, 0.02);">
+                                <td style="font-weight: 600;">20:00 - 22:00</td>
+                                <td>Puertas</td>
+                                <td colspan="2" style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+                            <tr style="background-color: rgba(46, 204, 113, 0.05); font-weight: 600;">
+                                <td style="color: var(--success);">22:00 - 00:30</td>
+                                <td style="color: #fff; font-size: 14px;">🎤 SHOW</td>
+                                <td colspan="2" style="color: var(--success); font-size: 12px;">🚀 Show Principal de Clausura</td>
+                            </tr>
+
+                            <!-- Domingo 21 de Junio (Desmontaje) -->
+                            <tr style="background-color: rgba(231, 76, 60, 0.1); border-top: 15px solid transparent; border-bottom: 2px solid var(--danger);">
+                                <td colspan="4" style="font-weight: 700; color: #f1948a; padding: 12px 16px;">
+                                    📅 Domingo 21 de Junio de 2026 — 🔧 DESMONTAJE OPERATIVO (NOCTURNO)
+                                </td>
+                            </tr>
+                            <tr style="background-color: rgba(231, 76, 60, 0.02);">
+                                <td style="font-weight: 600;">24:00 - 06:00</td>
+                                <td>Zetak producción</td>
+                                <td><span class="badge blue">Zetak producción</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">👥 2 pax retén</td>
+                            </tr>
+                            <tr style="background-color: rgba(231, 76, 60, 0.02);">
+                                <td style="font-weight: 600;">24:30 - 02:00</td>
+                                <td>Desmontaje escaleras grada</td>
+                                <td><span class="badge blue">Call & Play</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">👥 2 pax 24:00 - 02:00 | 🚜 1 toro carga</td>
+                            </tr>
+                            <tr style="background-color: rgba(231, 76, 60, 0.02);">
+                                <td style="font-weight: 600;">24:30 - 01:30</td>
+                                <td>Desmontaje backline</td>
+                                <td><span class="badge blue">Backline Zetak</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">👥 2 pax 01:00 - 03:00</td>
+                            </tr>
+                            <tr style="background-color: rgba(231, 76, 60, 0.02);">
+                                <td style="font-weight: 600;">24:30 - 01:30</td>
+                                <td>Desmontaje lásers variable</td>
+                                <td><span class="badge blue">Cittadini</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+                            <tr style="background-color: rgba(231, 76, 60, 0.02);">
+                                <td style="font-weight: 600;">01:30 - 03:00</td>
+                                <td>Desmontaje pasarela variable</td>
+                                <td><span class="badge blue">Arte</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+                            <tr style="background-color: rgba(231, 76, 60, 0.02);">
+                                <td style="font-weight: 600;">01:30 - 02:00</td>
+                                <td>Bajar el alto horno</td>
+                                <td><span class="badge blue">Arte</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+                            <tr style="background-color: rgba(231, 76, 60, 0.02);">
+                                <td style="font-weight: 600;">01:30 - 03:30</td>
+                                <td>Desmontaje layher grada</td>
+                                <td><span class="badge blue">Zero</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">👥 2 pax de 01:30 - 03:30 | 🚜 1 toro carga</td>
+                            </tr>
+                            <tr style="background-color: rgba(231, 76, 60, 0.02);">
+                                <td style="font-weight: 600;">02:00 - 04:00</td>
+                                <td>Desmontaje láser 600w</td>
+                                <td><span class="badge blue">Cittadini</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">👥 2 pax de 02:00 - 04:00 | 🚜 1 toro carga</td>
+                            </tr>
+                            <tr style="background-color: rgba(231, 76, 60, 0.02);">
+                                <td style="font-weight: 600;">24:30 - 02:00</td>
+                                <td>Desmontaje REA</td>
+                                <td><span class="badge blue">REA</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+                            <tr style="background-color: rgba(231, 76, 60, 0.02);">
+                                <td style="font-weight: 600;">01:00 - 08:00</td>
+                                <td>Desmontaje cámaras. Si no se puede el lunes 22</td>
+                                <td><span class="badge blue">Toboggan</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">👥 2 pax para cargas</td>
+                            </tr>
+                            <tr style="background-color: rgba(231, 76, 60, 0.02);">
+                                <td style="font-weight: 600;">01:00 - 04:00</td>
+                                <td>Desmontaje de RF</td>
+                                <td><span class="badge blue">Streaming on set</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+
+                            <!-- Lunes 22 de Junio -->
+                            <tr style="background-color: rgba(231, 76, 60, 0.1); border-top: 15px solid transparent; border-bottom: 2px solid var(--danger);">
+                                <td colspan="4" style="font-weight: 700; color: #f1948a; padding: 12px 16px;">
+                                    📅 Lunes 22 de Junio de 2026 — 🔧 DESMONTAJE OPERATIVO (NOCTURNO)
+                                </td>
+                            </tr>
+                            <tr style="background-color: rgba(231, 76, 60, 0.02);">
+                                <td style="font-weight: 600;">TBC</td>
+                                <td colspan="3">Actividad pendiente de confirmación</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">⏱️ Horarios Arte (Calendario In/Outs)</div>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Fechas</th>
+                                <th>Actividad Principal (Arte)</th>
+                                <th>Maquinaria / Recursos</th>
+                                <th>Personal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="font-weight: 600;">08 al 09 de Junio</td>
+                                <td>Carga de materiales (Árbol, Cocina, Horno, Cabinas)</td>
+                                <td>—</td>
+                                <td>2 Regidores</td>
+                            </tr>
+                            <tr style="background-color: rgba(56, 189, 248, 0.03);">
+                                <td style="font-weight: 600;">10 de Junio</td>
+                                <td>Llegada materiales. Montaje estructura Árbol, Cocina y Cabinas</td>
+                                <td>🚜 Toro descarga | 🏗️ Brazo 15m</td>
+                                <td>Equipo Soul + 4 Peones + 2 Regidores</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">11 de Junio</td>
+                                <td>Montaje Árbol (ramas/plásticos), Cocina y Cabinas</td>
+                                <td>🚜 Toro descarga | 🏗️ Manitou | 🏗️ Brazo 15m</td>
+                                <td>Equipo Soul + 4 Peones + 2 Regidores</td>
+                            </tr>
+                            <tr style="background-color: rgba(56, 189, 248, 0.03);">
+                                <td style="font-weight: 600;">12 de Junio</td>
+                                <td>Descarga Horno en césped y continuación montaje Árbol</td>
+                                <td>🏗️ Manitou | 🏗️ Brazo 15m</td>
+                                <td>Equipo Soul + 4 Peones + 2 Regidores</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">13 de Junio</td>
+                                <td>Montaje Horno y Provocador. Pruebas de agua en Árbol</td>
+                                <td>🚜 Toro | 🏗️ Manitou | 🏗️ Brazo 15m</td>
+                                <td>Equipo Soul + 4 Peones + 2 Regidores</td>
+                            </tr>
+                            <tr style="background-color: rgba(56, 189, 248, 0.03);">
+                                <td style="font-weight: 600;">14 de Junio</td>
+                                <td>Finalización de montaje de Horno</td>
+                                <td>🚜 Toro | 🏗️ Manitou</td>
+                                <td>Equipo Soul + 4 Peones + 2 Regidores</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">15 de Junio</td>
+                                <td>Suelo y LEDs Provocador. Retoques Horno</td>
+                                <td>🚜 Toro subir Horno | 🏗️ Brazo 15m</td>
+                                <td>Equipo Soul + 4 Peones + 2 Regidores + 4 Atrecistas</td>
+                            </tr>
+                            <tr style="background-color: rgba(56, 189, 248, 0.03);">
+                                <td style="font-weight: 600;">16 de Junio</td>
+                                <td>Subida de Horno a escenario</td>
+                                <td>—</td>
+                                <td>Equipo Soul + 4 Peones + 2 Regidores + 4 Atrecistas</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">17 al 18 de Junio</td>
+                                <td>Ensayos Oficiales y Ensayos Generales</td>
+                                <td>—</td>
+                                <td>Equipo Soul + 2 Regidores + 4 Atrecistas</td>
+                            </tr>
+                            <tr style="background-color: rgba(46, 204, 113, 0.05);">
+                                <td style="font-weight: 600;">19 al 20 de Junio</td>
+                                <td>SHOW DAYS (Live). Sábado: Sacar Props Escenario</td>
+                                <td>—</td>
+                                <td>Equipo Soul + 2 Regidores + 4 Atrecistas</td>
+                            </tr>
+                            <tr style="background-color: rgba(231, 76, 60, 0.05);">
+                                <td style="font-weight: 600;">21 de Junio</td>
+                                <td>Desmontaje nocturno (Suelos, Horno, Árbol, Cocina). Carga camiones</td>
+                                <td>🚜 Toro | 🏗️ Manitou | 🏗️ Brazo</td>
+                                <td>Equipo Soul + 4 Peones + 2 Regidores + 4 Atrecistas</td>
+                            </tr>
+                            <tr style="background-color: rgba(231, 76, 60, 0.05);">
+                                <td style="font-weight: 600;">22 de Junio</td>
+                                <td>Continuación desmontaje y carga camión Soul</td>
+                                <td>🚜 Toro | 🏗️ Manitou | 🏗️ Brazo</td>
+                                <td>Equipo Soul + 4 Peones + 2 Regidores + 4 Atrecistas</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">23 de Junio</td>
+                                <td>Carga final de camiones</td>
+                                <td>🚜 Toro</td>
+                                <td>Equipo Soul + 4 Peones + 2 Regidores</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">⚙️ Requerimientos Técnicos Básicos</div>
+                <p><strong>Consola FOH:</strong> Waves LV1 en gira (Propio de la banda).<br>
+                <strong>Consola de Monitores (MON):</strong> DiGiCo Quantum 338 (Alquiler Fluge).<br>
+                <strong>Consolas de Luces y Vídeo:</strong> Chamsys MagicQ MQ500 y MQ70 (Alquiler Fluge).<br>
+                <strong>Backline:</strong> Propio de gira en su totalidad.<br>
+                <strong>Sistema de Pantallas:</strong> Videowall LED central + 2 Pantallas de realización laterales (IMAGs) activadas.</p>
+            </div>
+        </div>
+
+        <!-- TAB: CONTACTOS -->
+        <div id="tab-contactos" class="tab-panel">
+            <div class="card">
+                <div class="card-title">📞 Directorio del Staff por Jornadas de Trabajo</div>
+                <div class="contact-grid">
+                    <a href="tel:+34610019415" class="contact-item">
+                        <span class="contact-name">Wero Edge</span>
+                        <span class="contact-role">Director Técnico</span>
+                        <span class="contact-info">📧 weroedge@hotmail.com / wero@vansandroll.com<br>📱 +34 610 019 415</span>
+                        <span class="badge blue" style="width:fit-content; margin-top:5px;">08 al 20 de Junio</span>
+                    </a>
+                    <a href="mailto:ines@stormproductions.pt" class="contact-item">
+                        <span class="contact-name">Inés Pires</span>
+                        <span class="contact-role">Asistente Infraestructuras | Storm</span>
+                        <span class="contact-info">📧 ines@stormproductions.pt</span>
+                        <span class="badge blue" style="width:fit-content; margin-top:5px;">13 al 21 de Junio</span>
+                    </a>
+                    <a href="mailto:dcalvo@tecproin.es" class="contact-item">
+                        <span class="contact-name">Daniel Calvo</span>
+                        <span class="contact-role">Ingeniero Técnico | Tecproin</span>
+                        <span class="contact-info">📧 dcalvo@tecproin.es</span>
+                        <span class="badge blue" style="width:fit-content; margin-top:5px;">12 al 20 de Junio</span>
+                    </a>
+                    <a href="mailto:francisco.ribeiro@stormproductions.pt" class="contact-item">
+                        <span class="contact-name">Francisco José Gomes Ribeiro</span>
+                        <span class="contact-role">CEO | Storm Productions</span>
+                        <span class="contact-info">📧 francisco.ribeiro@stormproductions.pt</span>
+                        <span class="badge blue" style="width:fit-content; margin-top:5px;">13 al 22 de Junio</span>
+                    </a>
+                    <a href="mailto:jordibruguesgi@gmail.com" class="contact-item">
+                        <span class="contact-name">Jordi Brugués</span>
+                        <span class="contact-role">Ingeniero de Sonido Principal</span>
+                        <span class="contact-info">📧 jordibruguesgi@gmail.com</span>
+                        <span class="badge blue" style="width:fit-content; margin-top:5px;">14 al 20 de Junio</span>
+                    </a>
+                    <a href="mailto:logistika@udv.eus" class="contact-item">
+                        <span class="contact-name">Maddi</span>
+                        <span class="contact-role">Coordinadora Logística | Undenvi</span>
+                        <span class="contact-info">📧 logistika@udv.eus</span>
+                        <span class="badge blue" style="width:fit-content; margin-top:5px;">14 al 20 de Junio</span>
+                    </a>
+                    <a href="mailto:manelrubio@econsultoring.com" class="contact-item">
+                        <span class="contact-name">Manel Rubio</span>
+                        <span class="contact-role">Director de Seguridad | EConsulting</span>
+                        <span class="contact-info">📧 manelrubio@econsultoring.com</span>
+                        <span class="badge blue" style="width:fit-content; margin-top:5px;">17 al 19 de Junio</span>
+                    </a>
+                    <a href="mailto:produccion@xavipayan.com" class="contact-item">
+                        <span class="contact-name">Xavi Payán</span>
+                        <span class="contact-role">Coordinador Hospitalidad y Catering</span>
+                        <span class="contact-info">📧 produccion@xavipayan.com</span>
+                        <span class="badge blue" style="width:fit-content; margin-top:5px;">13 al 20 de Junio</span>
+                    </a>
+                    <a href="mailto:jaumepique@gmail.com" class="contact-item">
+                        <span class="contact-name">Jaume Pique</span>
+                        <span class="contact-role">Asist Prod Manager | Freelance</span>
+                        <span class="contact-info">📧 jaumepique@gmail.com</span>
+                        <span class="badge blue" style="width:fit-content; margin-top:5px;">17 al 22 de Junio</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">🏟️ Contactos Oficiales del Estadio San Mamés</div>
+                <div class="contact-grid">
+                    <a href="tel:+34946852440" class="contact-item" style="border-color: rgba(129, 140, 248, 0.3);">
+                        <span class="contact-name" style="color: var(--accent-purple);">José Arroyo Fernández</span>
+                        <span class="contact-role" style="color: var(--text-main);">Responsable de Mantenimiento e Instalaciones</span>
+                        <span class="contact-info">📱 Tel: +34 946 852 440</span>
+                    </a>
+                    <a href="tel:+34946854180" class="contact-item" style="border-color: rgba(129, 140, 248, 0.3);">
+                        <span class="contact-name" style="color: var(--accent-purple);">Nerea Ortiz de Pinedo</span>
+                        <span class="contact-role" style="color: var(--text-main);">Responsable de Operaciones y Eventos</span>
+                        <span class="contact-info">📱 Tel: +34 946 854 180</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB: HORARIOS -->
+        <div id="tab-horarios" class="tab-panel">
+            <div class="card">
+                <div class="card-title">⏱️ Planificación Horaria de la Producción (Día a Día)</div>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Horario</th>
+                                <th>Operación / Tarea</th>
+                                <th>Proveedor Responsable</th>
+                                <th>Recursos / Notas</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+
+                            <!-- Día 6 -->
+                            <tr style="background-color: rgba(56, 189, 248, 0.05); border-top: 15px solid transparent; border-bottom: 2px solid var(--border-light);">
+                                <td colspan="4" style="font-weight: 700; color: var(--accent-blue); padding: 12px 16px;">
+                                    📅 13/06/2026 (Día 6)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">08:00 - 21:00</td>
+                                <td>Comienzo de montaje técnico audiovisual exclusivo ZETAK</td>
+                                <td><span class="badge blue">Fluge Euskadi</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">08:01 - 10:00</td>
+                                <td>Peritaje técnico de seguridad del estadio y estructuras</td>
+                                <td><span class="badge blue">Globaim</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">08:10 - 10:00</td>
+                                <td>Entrega de equipos de walkie-talkies en producción</td>
+                                <td><span class="badge blue">WRS</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">10:00 - 20:00</td>
+                                <td>Montaje de la pasarela y provocador del concierto (GAM)</td>
+                                <td><span class="badge blue">GAM</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">16:00 - 20:00</td>
+                                <td>Instalación de iluminación de emergencia en las escaleras</td>
+                                <td><span class="badge blue">Pereto Power</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+                            <!-- Día 8 -->
+                            <tr style="background-color: rgba(56, 189, 248, 0.05); border-top: 15px solid transparent; border-bottom: 2px solid var(--border-light);">
+                                <td colspan="4" style="font-weight: 700; color: var(--accent-blue); padding: 12px 16px;">
+                                    📅 15/06/2026 (Día 8)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">08:00 - 21:00</td>
+                                <td>Montaje de sonido, luces y pantallas LED de ZETAK</td>
+                                <td><span class="badge blue">Fluge Euskadi</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">10:00 - 21:00</td>
+                                <td>Montaje de cañones pirotécnicos en provocador y frontal</td>
+                                <td><span class="badge blue">Sukubo</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">10:05 - 14:00</td>
+                                <td>Montaje de la cocina de producción (zona de catering)</td>
+                                <td><span class="badge blue">Cuchara de Palo</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">10:10 - 20:00</td>
+                                <td>Montaje de la estructura "Anfiteatro Layher"</td>
+                                <td><span class="badge blue">Escena Zero</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">12:00 - 16:00</td>
+                                <td>Montaje e ingeniería de la plataforma variable en pasarela</td>
+                                <td><span class="badge blue">Pascualin Estructures</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+
+                            <!-- Día 9 -->
+                            <tr style="background-color: rgba(56, 189, 248, 0.05); border-top: 15px solid transparent; border-bottom: 2px solid var(--border-light);">
+                                <td colspan="4" style="font-weight: 700; color: var(--accent-blue); padding: 12px 16px;">
+                                    📅 16/06/2026 (Día 9)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">09:00 - 18:00</td>
+                                <td>Ajustes de audio, video y pantallas de producción</td>
+                                <td><span class="badge blue">Fluge Euskadi</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">12:00 - 12:00</td>
+                                <td>Pruebas de FX y pirotecnia (cañones y explosiones)</td>
+                                <td><span class="badge blue">Sukubo</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">12:15 - 16:00</td>
+                                <td>Montaje de vallado antipánico (Mojo barriers)</td>
+                                <td><span class="badge blue">Homs Rental</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">19:00 - 20:00</td>
+                                <td>Pruebas de la pasarela variable e iluminación</td>
+                                <td><span class="badge blue">Fluge</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+                            <tr style="background-color: rgba(56, 189, 248, 0.02); font-weight: 600;">
+                                <td style="color: var(--accent-blue);">21:00 - 05:00</td>
+                                <td>PROGRAMACIÓN Y ENFOQUE DE ILUMINACIÓN DE ZETAK (NOCTURNO)</td>
+                                <td><span class="badge blue">Fluge / ZETAK Crew</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">🌑 Nocturno</td>
+                            </tr>
+
+                            <!-- Ensayos -->
+                            <tr style="background-color: rgba(56, 189, 248, 0.05); border-top: 15px solid transparent; border-bottom: 2px solid var(--border-light);">
+                                <td colspan="4" style="font-weight: 700; color: var(--accent-blue); padding: 12px 16px;">
+                                    📅 17 al 18/06/2026 (Días 10-11) — ENSAYOS
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td style="font-weight: 600;">12:00 - 14:00</td>
+                                <td>Pruebas generales de pirotecnia diurna</td>
+                                <td><span class="badge blue">Sukubo</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">15:00 - 00:00</td>
+                                <td>Ensayo general y pase completo con pirotecnia y drones</td>
+                                <td><span class="badge blue">ZETAK Crew</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">🚀 Pase Completo</td>
+                            </tr>
+
+                            <!-- Show Day 1 -->
+                            <tr style="background-color: rgba(46, 204, 113, 0.05); border-top: 15px solid transparent; border-bottom: 2px solid var(--success);">
+                                <td colspan="4" style="font-weight: 700; color: var(--success); padding: 12px 16px;">
+                                    📅 19/06/2026 (Día 12) — 🌟 CONCIERTO DÍA 1
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">20:30 - 22:30</td>
+                                <td>Apertura de puertas de público</td>
+                                <td><span class="badge blue">Sureuskadi</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+                            <tr style="background-color: rgba(46, 204, 113, 0.02); font-weight: 600;">
+                                <td style="color: var(--success);">22:30 - 01:15</td>
+                                <td>EJECUCIÓN DEL CONCIERTO DÍA 1 DE ZETAK (MITOAROA III)</td>
+                                <td><span class="badge green">ZETAK Crew</span></td>
+                                <td style="color: var(--success); font-size: 12px;">🎤 Show Live</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">01:00 - 04:00</td>
+                                <td>Desmontaje y retirada rápida de vallados antipánico en pista</td>
+                                <td><span class="badge blue">Homs Rental</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">01:15 - 03:00</td>
+                                <td>Desmontaje de la plataforma variable en pasarela</td>
+                                <td><span class="badge blue">Pascualin Estructures</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+
+                            <!-- Show Day 2 -->
+                            <tr style="background-color: rgba(46, 204, 113, 0.05); border-top: 15px solid transparent; border-bottom: 2px solid var(--success);">
+                                <td colspan="4" style="font-weight: 700; color: var(--success); padding: 12px 16px;">
+                                    📅 20/06/2026 (Día 13) — 🌟 CONCIERTO DÍA 2
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">20:00 - 22:00</td>
+                                <td>Apertura de puertas (Show Principal)</td>
+                                <td><span class="badge blue">Sureuskadi</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+                            <tr style="background-color: rgba(46, 204, 113, 0.02); font-weight: 600;">
+                                <td style="color: var(--success);">22:00 - 23:30</td>
+                                <td>EJECUCIÓN DEL CONCIERTO DÍA 2 DE ZETAK (MITOAROA III)</td>
+                                <td><span class="badge green">ZETAK Crew</span></td>
+                                <td style="color: var(--success); font-size: 12px;">🎤 Show Principal</td>
+                            </tr>
+
+                            <!-- Desmontaje -->
+                            <tr style="background-color: rgba(231, 76, 60, 0.05); border-top: 15px solid transparent; border-bottom: 2px solid var(--danger);">
+                                <td colspan="4" style="font-weight: 700; color: #f1948a; padding: 12px 16px;">
+                                    📅 21 al 24/06/2026 (Días 14-16) — 🔧 DESMONTAJE FINAL
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">14:00 - 21:00</td>
+                                <td>Desmontaje completo del escenario en el estadio</td>
+                                <td><span class="badge blue">StageTec Portugal</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">10:00 - 21:00</td>
+                                <td>Retirada del cubrimiento de césped y limpieza general</td>
+                                <td><span class="badge blue">Mojo Rental B.V.</span></td>
+                                <td style="color: var(--text-muted); font-size: 12px;">—</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB: ESCENARIO -->
+        <div id="tab-escenario" class="tab-panel">
+            <div class="card">
+                <div class="card-title">📐 Especificaciones Técnicas del Escenario (STG03)</div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
+                    <div>
+                        <p style="margin-bottom: 8px;"><strong style="color: var(--accent-blue);">Estructura Principal:</strong></p>
+                        <ul style="list-style: none; padding-left: 0; font-size: 14px; color: var(--text-main);">
+                            <li style="margin-bottom: 5px;">🏗️ <strong>Tipo:</strong> Torres de alta capacidad (STG Roof 03 - StageTec).</li>
+                            <li style="margin-bottom: 5px;">📏 <strong>Planchada:</strong> 18 m (ancho) x 11 m (fondo).</li>
+                            <li style="margin-bottom: 5px;">↕️ <strong>Clearance:</strong> 15 metros libres.</li>
+                            <li style="margin-bottom: 5px;">🔝 <strong>Altura Total:</strong> 17 metros (Deck to Grid).</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p style="margin-bottom: 8px;"><strong style="color: var(--accent-blue);">Extensiones (Wings):</strong></p>
+                        <ul style="list-style: none; padding-left: 0; font-size: 14px; color: var(--text-main);">
+                            <li style="margin-bottom: 5px;">⬅️ <strong>SL (Izquierda):</strong> Pasarela frontal (18x2,5m) + Ala soporte (18x5m).</li>
+                            <li style="margin-bottom: 5px;">➡️ <strong>SR (Derecha):</strong> Pasarela frontal (18x2,5m) + Muelle carga (4x9m).</li>
+                            <li style="margin-bottom: 5px;">🎭 <strong>Risings:</strong> Anfiteatro Layher + Tarimas integradas.</li>
+                            <li style="margin-bottom: 5px;">🪜 <strong>Escaleras:</strong> 2 traseras + frontales de pasarela.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">🗺️ Plano de Implantación del Escenario</div>
+                <p style="font-size: 14px; margin-bottom: 15px; color: var(--text-muted);">Vista técnica horizontal (ZETAK Implantacion FINAL 2105):</p>
+                
+                <div style="width: 100%; height: 500px; position: relative; overflow: hidden; border-radius: 8px; border: 1px solid var(--border-light); background: #2a2a2e;">
+                    <iframe src="Escenario/ZETAK%20Implantacion%20FINAL%202105-Stage.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH" 
+                            style="width: 100%; height: 100%; border: none;">
+                    </iframe>
+                </div>
+                
+                <div style="margin-top: 15px; display: flex; justify-content: flex-end; gap: 10px;">
+                    <span style="font-size: 12px; color: var(--text-muted); align-self: center;">⚠️ El visor puede variar según el navegador.</span>
+                    <a href="Escenario/ZETAK%20Implantacion%20FINAL%202105-Stage.pdf" target="_blank" class="badge blue" style="text-decoration: none; padding: 8px 15px;">🔍 Abrir plano original</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">🔌 Distribución de Energía y Potencia Eléctrica</div>
+                <p style="font-size: 14px; margin-bottom: 15px;">Acometidas de fuerza y tomas técnicas confirmadas según <span class="badge blue">Plano de Electricidad (ZETAK 2105)</span>:</p>
+                <div class="contact-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+                    <div class="contact-item" style="padding: 12px; background: rgba(56, 189, 248, 0.03);">
+                        <strong style="color: var(--accent-blue);">🔊 Audio P.A.</strong><br>
+                        <span style="font-size: 13px;">2x 300 KVAs (Independientes)</span>
+                    </div>
+                    <div class="contact-item" style="padding: 12px; background: rgba(56, 189, 248, 0.03);">
+                        <strong style="color: var(--accent-blue);">💡 Iluminación</strong><br>
+                        <span style="font-size: 13px;">2x 4 KVAs (Auxiliar FOH)</span>
+                    </div>
+                    <div class="contact-item" style="padding: 12px; background: rgba(56, 189, 248, 0.03);">
+                        <strong style="color: var(--accent-blue);">📺 Vídeo y LED</strong><br>
+                        <span style="font-size: 13px;">2x 300 KVAs</span>
+                    </div>
+                    <div class="contact-item" style="padding: 12px; background: rgba(56, 189, 248, 0.03);">
+                        <strong style="color: var(--accent-blue);">🏗️ Stage Power</strong><br>
+                        <span style="font-size: 13px;">2x 32A (Centro / Abajo Escenario)</span>
+                    </div>
+                    <div class="contact-item" style="padding: 12px; background: rgba(56, 189, 248, 0.03);">
+                        <strong style="color: var(--accent-blue);">🎆 FX Pyro</strong><br>
+                        <span style="font-size: 13px;">2x 32A (Escenario / Centro)</span>
+                    </div>
+                    <div class="contact-item" style="padding: 12px; background: rgba(56, 189, 248, 0.03);">
+                        <strong style="color: var(--accent-blue);">🍽️ Catering</strong><br>
+                        <span style="font-size: 13px;">2x 32A (Cocina Producción)</span>
+                    </div>
+                    <div class="contact-item" style="padding: 12px; background: rgba(56, 189, 248, 0.03);">
+                        <strong style="color: var(--accent-blue);">🔌 Distribución</strong><br>
+                        <span style="font-size: 13px;">6x Distribuidor 63A</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">🔊 Equipamiento de Sonido (P.A. & FOH)</div>
+                <p style="font-size: 14px; margin-bottom: 15px;">Sistema <span class="badge blue">d&b audiotechnik</span> suministrado por <span class="badge blue">Fluge</span>:</p>
+                <div style="border-left: 3px solid var(--accent-blue); padding-left: 15px; margin-bottom: 15px;">
+                    <p style="margin-bottom: 5px;"><strong style="color: var(--accent-blue);">P.A. Principal:</strong></p>
+                    <span style="font-size: 14px;">32x d&b GSL8 (voladas) + 30x Amplificadores d&b D-80.</span>
+                </div>
+                <div style="border-left: 3px solid var(--accent-blue); padding-left: 15px; margin-bottom: 15px;">
+                    <p style="margin-bottom: 5px;"><strong style="color: var(--accent-blue);">Subgraves (Subs):</strong></p>
+                    <span style="font-size: 14px;">12x d&b SL-SUB (cardioides volados) + 16x d&b SL-SUB (apoyados en pista).</span>
+                </div>
+                <div style="border-left: 3px solid var(--accent-blue); padding-left: 15px;">
+                    <p style="margin-bottom: 5px;"><strong style="color: var(--accent-blue);">Outfills & Delays:</strong></p>
+                    <span style="font-size: 14px;">32x d&b GSL8 (outfill) + 40x d&b KSL8/12 (retraso/delay).</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">💡 Equipamiento de Iluminación (Luminarias & Control)</div>
+                <p style="font-size: 14px; margin-bottom: 15px;">Diseño de iluminación suministrado por <span class="badge blue">Fluge</span>:</p>
+                <div style="border-left: 3px solid var(--accent-blue); padding-left: 15px; margin-bottom: 15px;">
+                    <p style="margin-bottom: 5px;"><strong style="color: var(--accent-blue);">Luminarias Móviles (Moving Heads):</strong></p>
+                    <ul style="list-style: none; padding-left: 0; font-size: 14px;">
+                        <li>• <strong>69x</strong> Robe iForte LED TE 1000W (Spot Frontal IP65)</li>
+                        <li>• <strong>24x</strong> Robe iSpiiderX IP65 (Wash/Beam)</li>
+                        <li>• <strong>30x</strong> Robe Tarrantula LED Beam/Wash</li>
+                        <li>• <strong>40x</strong> Robe LED Beam 350</li>
+                        <li>• <strong>38x</strong> Robe Tetra 2 (Barras móviles)</li>
+                        <li>• <strong>12x</strong> Robe iForte LTX (Controlados por RoboSpot)</li>
+                    </ul>
+                </div>
+                <div style="border-left: 3px solid var(--accent-blue); padding-left: 15px; margin-bottom: 15px;">
+                    <p style="margin-bottom: 5px;"><strong style="color: var(--accent-blue);">Iluminación Estática, FX y Seguimiento:</strong></p>
+                    <ul style="list-style: none; padding-left: 0; font-size: 14px;">
+                        <li>• <strong>72x</strong> SGM Q8 Flood Strobe</li>
+                        <li>• <strong>145x</strong> GLP Impression X4 Bar 20</li>
+                        <li>• <strong>40x</strong> GLP JDC 1 (Hybrid Strobe)</li>
+                        <li>• <strong>16x</strong> Astera Titan Tube</li>
+                        <li>• <strong>5x</strong> RoboSpot Base Station + Camera Set</li>
+                        <li>• <strong>20x</strong> Robe HZ500 Máquinas de humo</li>
+                    </ul>
+                </div>
+                <div style="border-left: 3px solid var(--accent-blue); padding-left: 15px;">
+                    <p style="margin-bottom: 5px;"><strong style="color: var(--accent-blue);">Control y Red:</strong></p>
+                    <span style="font-size: 14px;"><strong>2x</strong> Chamsys MagicQ MQ500 (Master/Backup) + <strong>2x</strong> Chamsys MQ70 (Auxiliar/Compact) + Nodos Luminex Gigacore.</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">📺 Equipamiento de Vídeo (Pantallas & Servidores)</div>
+                <p style="font-size: 14px; margin-bottom: 15px;">Sistema visual gestionado por <span class="badge blue">Fluge</span> y <span class="badge blue">Eyesberg</span>:</p>
+                <div style="border-left: 3px solid var(--accent-blue); padding-left: 15px; margin-bottom: 15px;">
+                    <p style="margin-bottom: 5px;"><strong style="color: var(--accent-blue);">Pantallas LED (P3.9 Outdoor):</strong></p>
+                    <ul style="list-style: none; padding-left: 0; font-size: 14px;">
+                        <li>• <strong>2x</strong> Pantallas P3.9 Blackface (18.000 x 10.000 mm)</li>
+                        <li>• <strong>1x</strong> Pantalla P3.9 Vanish (18.000 x 10.000 mm)</li>
+                        <li>• <strong>54x</strong> Bumpers Dicolor + Estructuras de volado</li>
+                    </ul>
+                </div>
+                <div style="border-left: 3px solid var(--accent-blue); padding-left: 15px; margin-bottom: 15px;">
+                    <p style="margin-bottom: 5px;"><strong style="color: var(--accent-blue);">Servidores y Procesamiento:</strong></p>
+                    <span style="font-size: 14px;"><strong>3x</strong> Procesadores NovaStar H5 + Servidores de medios Eyesberg + <strong>6x</strong> Conversores Fibra-SDI.</span>
+                </div>
+                <div style="border-left: 3px solid var(--accent-blue); padding-left: 15px;">
+                    <p style="margin-bottom: 5px;"><strong style="color: var(--accent-blue);">Realización y Captación:</strong></p>
+                    <span style="font-size: 14px;">Sistema de cámaras 4K Toboggan + <strong>2x</strong> Decimator + Controles de realización en Sala Audiovisuales.</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB: PLANOS -->
+        <div id="tab-planos" class="tab-panel">
+            <div class="card">
+                <div class="card-title">🗺️ Repositorio de Planos (Documentación PDF)</div>
+                <p style="font-size: 14px; color: var(--text-muted);">Acceso exclusivo a la planimetría final aprobada para la producción en San Mamés.</p>
+            </div>
+
+            <div class="contact-grid">
+                <!-- Bloque 1: Implantación y Accesos -->
+                <div class="card" style="margin-top: 0;">
+                    <h4 style="margin-top:0; color: var(--accent-blue);">📍 Implantación y Accesos</h4>
+                    <ul style="list-style: none; padding-left: 0; font-size: 14px; color: var(--text-main);">
+                        <li style="margin-bottom: 12px;">
+                            <strong>Acceso Personal (Vial):</strong><br>
+                            <a href="../ARTIST/PLANOS/PDFs/ZETAK%20Implantacion%20FINAL%202105-Implantacion%20(Acceso%20personal).pdf" target="_blank" class="badge blue" style="text-decoration: none; margin-top:5px; display:inline-block;">Ver PDF</a>
+                        </li>
+                        <li style="margin-bottom: 12px;">
+                            <strong>Accesos Generales:</strong><br>
+                            <a href="../ARTIST/PLANOS/PDFs/ZETAK%20Implantacion%20FINAL%202105-Implantacion%20(Accesos).pdf" target="_blank" class="badge blue" style="text-decoration: none; margin-top:5px; display:inline-block;">Ver PDF</a>
+                        </li>
+                        <li style="margin-bottom: 12px;">
+                            <strong>Implantación Exterior:</strong><br>
+                            <a href="../ARTIST/PLANOS/PDFs/ZETAK%20Implantacion%20FINAL%202105-Implantacion%20Exterior.pdf" target="_blank" class="badge blue" style="text-decoration: none; margin-top:5px; display:inline-block;">Ver PDF</a>
+                        </li>
+                        <li style="margin-bottom: 12px;">
+                            <strong>Flujos de Público:</strong><br>
+                            <a href="../ARTIST/PLANOS/PDFs/ZETAK%20Implantacion%20FINAL%202105-Flujos.pdf" target="_blank" class="badge blue" style="text-decoration: none; margin-top:5px; display:inline-block;">Ver PDF</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Bloque 2: Escenario y Técnica -->
+                <div class="card" style="margin-top: 0;">
+                    <h4 style="margin-top:0; color: var(--accent-blue);">🏗️ Escenario y Técnica</h4>
+                    <ul style="list-style: none; padding-left: 0; font-size: 14px; color: var(--text-main);">
+                        <li style="margin-bottom: 12px;">
+                            <strong>Plano Stage (ZETAK):</strong><br>
+                            <a href="../ARTIST/PLANOS/PDFs/ZETAK%20Implantacion%20FINAL%202105-Stage.pdf" target="_blank" class="badge blue" style="text-decoration: none; margin-top:5px; display:inline-block;">Ver PDF</a>
+                        </li>
+                        <li style="margin-bottom: 12px;">
+                            <strong>Instalación Eléctrica:</strong><br>
+                            <a href="../ARTIST/PLANOS/PDFs/ZETAK%20Implantacion%20FINAL%202105-Electricidad.pdf" target="_blank" class="badge blue" style="text-decoration: none; margin-top:5px; display:inline-block;">Ver PDF</a>
+                        </li>
+                        <li style="margin-bottom: 12px;">
+                            <strong>Cámaras y Realización:</strong><br>
+                            <a href="../ARTIST/PLANOS/PDFs/ZETAK%20Implantacion%20FINAL%202105-Camaras.pdf" target="_blank" class="badge blue" style="text-decoration: none; margin-top:5px; display:inline-block;">Ver PDF</a>
+                        </li>
+                        <li style="margin-bottom: 12px;">
+                            <strong>Efectos Especiales (FX):</strong><br>
+                            <a href="../ARTIST/PLANOS/PDFs/ZETAK%20Implantacion%20FINAL%202105-FX.pdf" target="_blank" class="badge blue" style="text-decoration: none; margin-top:5px; display:inline-block;">Ver PDF</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Bloque 3: Recinto y Otros -->
+                <div class="card" style="margin-top: 0;">
+                    <h4 style="margin-top:0; color: var(--accent-blue);">🏟️ Recinto y Otros</h4>
+                    <ul style="list-style: none; padding-left: 0; font-size: 14px; color: var(--text-main);">
+                        <li style="margin-bottom: 12px;">
+                            <strong>Vallados y Seguridad:</strong><br>
+                            <a href="../ARTIST/PLANOS/PDFs/ZETAK%20Implantacion%20FINAL%202105-Vallados.pdf" target="_blank" class="badge blue" style="text-decoration: none; margin-top:5px; display:inline-block;">Ver PDF</a>
+                        </li>
+                        <li style="margin-bottom: 12px;">
+                            <strong>Sitting Plan (Asientos):</strong><br>
+                            <a href="../ARTIST/PLANOS/PDFs/ZETAK%20Implantacion%20FINAL%202105-Asientos.pdf" target="_blank" class="badge blue" style="text-decoration: none; margin-top:5px; display:inline-block;">Ver PDF</a>
+                        </li>
+                        <li style="margin-bottom: 12px;">
+                            <strong>Merchandising:</strong><br>
+                            <a href="../ARTIST/PLANOS/PDFs/ZETAK%20Implantacion%20FINAL%202105-MERCH.pdf" target="_blank" class="badge blue" style="text-decoration: none; margin-top:5px; display:inline-block;">Ver PDF</a>
+                        </li>
+                        <li style="margin-bottom: 12px;">
+                            <strong>Evento EHU (Stage):</strong><br>
+                            <a href="../ARTIST/PLANOS/PDFs/EHU%20Implantacion%20FINAL%202105-Stage.pdf" target="_blank" class="badge blue" style="text-decoration: none; margin-top:5px; display:inline-block;">Ver PDF</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB: PROVEEDORES -->
+        <div id="tab-proveedores" class="tab-panel">
+            <div class="card">
+                <div class="card-title">🤝 Guía y Contacto de Proveedores Oficiales del Show</div>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nombre Comercial</th>
+                                <th>Servicio / Categoría</th>
+                                <th>Persona de Contacto</th>
+                                <th>Correo Electrónico</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Fluge Euskadi S.L.</strong></td>
+                                <td>Servicios Audiovisuales (Luz, Sonido, Video)</td>
+                                <td>Técnico de Cuenta</td>
+                                <td>prodeuskadi@fluge.es</td>
+                            </tr>
+                            <tr>
+                                <td><strong>General de Alquiler de Maquinaria (GAM)</strong></td>
+                                <td>Alquiler de Escaleras, Provocadores y Andamios</td>
+                                <td>Rubén Lombardero Sanmartín</td>
+                                <td>rlombardero@gamrentals.com</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Penny Norte S.L. (Pennywise)</strong></td>
+                                <td>Personal Auxiliar de Carga y Rigging</td>
+                                <td>Ixone Pennywise (Project Manager)</td>
+                                <td>norte@grupopennywise.com</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Mojo Rental B.V.</strong></td>
+                                <td>Estructuras de protección de Césped/Suelo</td>
+                                <td>Bart Van Middelkoop</td>
+                                <td>bart.vanmiddelkoop.mojorental.com</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pereto Power</strong></td>
+                                <td>Acometidas de Fuerza y Generadores</td>
+                                <td>Área de Ingeniería</td>
+                                <td>ingenieria@pereto.es</td>
+                            </tr>
+                            <tr>
+                                <td><strong>StageTec Portugal</strong></td>
+                                <td>Montaje de Estructura de Escenario</td>
+                                <td>Pedro Lopes</td>
+                                <td>pedro.lopes@stagetec.pt</td>
+                            </tr>
+                            <tr>
+                                <td><strong>IN OUT Barcelona</strong></td>
+                                <td>Escenografía y Dirección de Arte</td>
+                                <td>Antoni Castells Zamora (Art Director)</td>
+                                <td>acastells@inout.cat</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Cuchara de Palo, S.L.</strong></td>
+                                <td>Servicios de Catering y Comedor de Staff</td>
+                                <td>Gonzaga Martínez (Manager)</td>
+                                <td>gonzaga@cucharadepalo.cooking</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pascualin Estructures, S.L.</strong></td>
+                                <td>Montaje de la Pasarela Variable</td>
+                                <td>Marina Vilardell</td>
+                                <td>marina.vilardell@pascualin.es</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Sukubo S.L.</strong></td>
+                                <td>Efectos Especiales y Pirotecnia</td>
+                                <td>Dpto. Operaciones FX</td>
+                                <td>infosukubo@gmail.com</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tars Rigging</strong></td>
+                                <td>Rigging de Trusses y Motores</td>
+                                <td>Miguel (Rigging Manager)</td>
+                                <td>miguel@tarsrigging.es</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Globaim S.L.</strong></td>
+                                <td>Peritaje de Seguridad Estructural</td>
+                                <td>Eduardo Laseca Oliván</td>
+                                <td>eduardo.laseca@globaim.com</td>
+                            </tr>
+                            <tr>
+                                <td><strong>WRS, S.L.</strong></td>
+                                <td>Suministro de Walkies y Radiocomunicaciones</td>
+                                <td>Miguel Donoso</td>
+                                <td>mdonoso@wrscomunicacion.com</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Streaming On Set</strong></td>
+                                <td>Transmisión y realización RF y Satelital</td>
+                                <td>Dpto. Técnico Realización</td>
+                                <td>rentals@streamingonset.com</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Sureuskadi, S.L.</strong></td>
+                                <td>Seguridad Privada y Auxiliares de Control</td>
+                                <td>Coordinador de Seguridad</td>
+                                <td>allordes@sureuskadi.es</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB: PARKING -->
+        <div id="tab-parking" class="tab-panel">
+            <div class="card">
+                <div class="card-title">🅿️ Normativas de Estacionamiento y Parking</div>
+                <p><strong>Gestión Operativa:</strong> San Mamés dispone de un riguroso protocolo de aparcamiento para evitar colapsos en las inmediaciones y garantizar las vías de evacuación en caso de emergencia.</p>
+                <div class="alert-box" style="margin-top: 15px; border-left: 5px solid var(--warning); background-color: rgba(241, 196, 15, 0.05); border-color: rgba(241, 196, 15, 0.3);">
+                    <h4 style="color: #f4d03f;">📌 Instrucciones Críticas de Tránsito</h4>
+                    <p>1. Solo serán admitidos en el <strong>parking interior</strong> del estadio los vehículos con su autorización explícita y acreditada para el día exacto de montaje y desmontaje.</p>
+                    <p style="margin-top: 10px;">2. Los vehículos personales del equipo de trabajo, personal de producción, proveedores y artistas deberán de estacionar exclusivamente en el <strong>parking exterior habilitado</strong>, previa confirmación y asignación de plaza por el departamento de logística y operaciones de Vans & Roll.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB: HOSPITALIDAD -->
+        <div id="tab-hospitalidad" class="tab-panel">
+            <div class="card">
+                <div class="card-title">Camerinos y Accesos</div>
+                <p style="font-size: 14px; line-height: 1.6; margin-bottom: 12px; color: var(--text-main);">El responsable de coordinar la hospitalidad y los camerinos del evento es <strong>Xavi Payán</strong>.</p>
+                <ul style="list-style: disc; padding-left: 20px; font-size: 14px; color: var(--text-main); margin-bottom: 10px;">
+                    <li style="margin-bottom: 8px;">Si necesitas consultar su información de contacto (correo o teléfono móvil), puedes acceder directamente a la sección de <a onclick="switchTab('contactos')" style="color: var(--accent-blue); cursor: pointer; text-decoration: underline; font-weight: 600;">Contactos y Staff</a> de este dossier.</li>
+                    <li style="margin-bottom: 8px;">Al llegar al Estadio San Mamés, debes localizar a <strong>Xavi Payán</strong>, quien será el encargado de explicarte y mostrarte la ubicación de tu camerino u oficina asignada (en caso de que tengas una asignada para esta producción).</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="card-title">Catering en el Estadio</div>
+                <p style="font-size: 14px; line-height: 1.6; margin-bottom: 12px; color: var(--text-main);">El servicio de catering oficial para la producción en el recinto se activará a partir del <strong>día 16 de Junio</strong>.</p>
+                <ul style="list-style: disc; padding-left: 20px; font-size: 14px; color: var(--text-main); margin-bottom: 10px;">
+                    <li style="margin-bottom: 8px;"><strong>Acceso Autorizado:</strong> Este servicio está disponible exclusivamente para aquellos miembros del staff y artistas que han sido previamente informados y confirmados para acceder al comedor.</li>
+                    <li style="margin-bottom: 8px;"><strong>Sistema de Tickets:</strong> El comedor se gestionará estrictamente por medio de <strong>tickets físicos de servicio</strong>.</li>
+                    <li style="margin-bottom: 8px;"><strong>Reparto de Tickets:</strong> Los tickets correspondientes te serán entregados por el <strong>responsable de tu área</strong>, no por Xavi Payán directamente. Por favor, solicita a tu supervisor tus tickets antes del inicio del turno.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="card-title">Horarios de Comedor</div>
+                <p style="font-size: 14px; line-height: 1.6; margin-bottom: 12px; color: var(--text-main);">El comedor está ubicado en la planta baja (planta cero) del estadio, justo detrás del escenario. Los horarios oficiales para los servicios de comidas son los siguientes:</p>
+                <ul style="list-style: disc; padding-left: 20px; font-size: 14px; color: var(--text-main); margin-bottom: 10px;">
+                    <li style="margin-bottom: 8px;"><strong>Almuerzo (Comida):</strong> De 13:00 a 16:00</li>
+                    <li style="margin-bottom: 8px;"><strong>Cena:</strong> De 19:30 a 22:30</li>
+                </ul>
+                <p style="font-size: 14px; line-height: 1.6; margin-bottom: 12px; color: var(--text-main);"><em>Por favor, respeta estrictamente los horarios establecidos para garantizar el correcto flujo de servicio de la cocina.</em></p>
+            </div>
+        </div>
+
+        <!-- TAB: LOGÍSTICA -->
+        <div id="tab-logistica" class="tab-panel">
+            <div class="card">
+                <div class="card-title">Responsable de Logística</div>
+                <p style="font-size: 14px; line-height: 1.6; margin-bottom: 12px; color: var(--text-main);">La encargada de coordinar toda la logística de viajes, transportes y reservas de hotel de la producción es <strong>Maddi</strong>.</p>
+                <ul style="list-style: disc; padding-left: 20px; font-size: 14px; color: var(--text-main); margin-bottom: 10px;">
+                    <li style="margin-bottom: 8px;">Si necesitas consultar su información de contacto (correo electrónico, etc.), puedes acceder directamente a la sección de <a onclick="switchTab('contactos')" style="color: var(--accent-blue); cursor: pointer; text-decoration: underline; font-weight: 600;">Contactos y Staff</a> de este dossier.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="card-title">Logística por Tierra (Transportes)</div>
+                <p style="font-size: 14px; line-height: 1.6; margin-bottom: 12px; color: var(--text-main);">Si previamente se había pactado o acordado un transporte terrestre específico para ti (tren, coche de producción, traslados, etc.):</p>
+                <ul style="list-style: disc; padding-left: 20px; font-size: 14px; color: var(--text-main); margin-bottom: 10px;">
+                    <li style="margin-bottom: 8px;">Debes ponerte en contacto directamente con <strong>Maddi</strong> para que te envíe la confirmación, horarios e información detallada de tus viajes.</li>
+                    <li style="margin-bottom: 8px;">Se ruega solicitar esta información con suficiente antelación a tu jornada de viaje asignada.</li>
+                    <li style="margin-bottom: 8px;"><strong>Check-in de Viajes:</strong> El check-in de todos los viajes correrá a cargo del viajero. Por favor, no olvides hacer tu check-in por lo menos con <strong>24 horas de antelación</strong>, ya que en algunos viajes es necesario para garantizar la plaza.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="card-title">Logística de Hoteles (Alojamiento)</div>
+                <p style="font-size: 14px; line-height: 1.6; margin-bottom: 12px; color: var(--text-main);">Para todo el personal técnico, staff y artistas que cuenten con alojamiento reservado por la producción:</p>
+                <ul style="list-style: disc; padding-left: 20px; font-size: 14px; color: var(--text-main); margin-bottom: 10px;">
+                    <li style="margin-bottom: 8px;"><strong>Check-ins y Procesos:</strong> Es responsabilidad exclusiva de cada persona realizar su propio check-in al llegar al hotel, así como gestionar cualquier proceso administrativo o derivado de la reserva (presentación de documento de identidad DNI/Pasaporte, depósito en garantía si el hotel lo requiere para extras, etc.).</li>
+                    <li style="margin-bottom: 8px;">El hotel ya dispone del pago del alojamiento por parte de la producción, pero todos los gastos extras personales durante la estancia correrán por cuenta de cada integrante del staff.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function switchTab(tabId) {
+        // Cambiar items activos de la navegación
+        const navItems = document.querySelectorAll('.nav-item');
+        navItems.forEach(item => item.classList.remove('active'));
+        
+        // Asignar activo al seleccionado
+        const clickedItem = Array.from(navItems).find(item => item.getAttribute('onclick').includes(tabId));
+        if (clickedItem) clickedItem.classList.add('active');
+
+        // Cambiar paneles
+        const panels = document.querySelectorAll('.tab-panel');
+        panels.forEach(panel => panel.classList.remove('active'));
+        document.getElementById('tab-' + tabId).classList.add('active');
+
+        // Cambiar título de página
+        document.getElementById('page-title').innerHTML = clickedItem.innerHTML;
+    }
+
+    function toggleFaq(element) {
+        const item = element.parentElement;
+        item.classList.toggle('open');
+        const span = element.querySelector('span');
+        if(item.classList.contains('open')) {
+            span.textContent = '➖';
+        } else {
+            span.textContent = '➕';
+        }
+    }
+</script>
+
+</body>
+</html>

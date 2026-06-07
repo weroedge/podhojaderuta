@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial de Peticiones y Respuestas - ZETAK San Mamés</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --border-color: #334155;
+            
+            --success-color: #2ecc71;
+            --success-bg: rgba(46, 204, 113, 0.12);
+            --success-border: rgba(46, 204, 113, 0.3);
+            
+            --warning-color: #f1c40f;
+            --warning-bg: rgba(241, 196, 15, 0.12);
+            --warning-border: rgba(241, 196, 15, 0.3);
+            
+            --danger-color: #e74c3c;
+            --danger-bg: rgba(231, 76, 60, 0.12);
+            --danger-border: rgba(231, 76, 60, 0.3);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+        }
+
+        header {
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            letter-spacing: -0.5px;
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.subtitle {
+            color: var(--text-secondary);
+            margin: 0;
+            font-size: 15px;
+        }
+
+        .legend {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+            background-color: var(--card-bg);
+            padding: 15px 20px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            width: fit-content;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot.green { background-color: var(--success-color); }
+        .dot.orange { background-color: var(--warning-color); }
+        .dot.red { background-color: var(--danger-color); }
+
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 14px;
+            background-color: var(--card-bg);
+        }
+
+        th {
+            background-color: #1e293b;
+            padding: 16px 20px;
+            font-weight: 600;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--border-color);
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            padding: 18px 20px;
+            border-bottom: 1px solid var(--border-color);
+            line-height: 1.5;
+            vertical-align: top;
+        }
+
+        /* Colores por fila según estado */
+        tr.status-green {
+            background-color: var(--success-bg);
+            border-left: 4px solid var(--success-color);
+        }
+        tr.status-green:hover {
+            background-color: rgba(46, 204, 113, 0.18);
+        }
+        tr.status-green td {
+            border-bottom: 1px solid var(--success-border);
+        }
+
+        tr.status-orange {
+            background-color: var(--warning-bg);
+            border-left: 4px solid var(--warning-color);
+        }
+        tr.status-orange:hover {
+            background-color: rgba(241, 196, 15, 0.18);
+        }
+        tr.status-orange td {
+            border-bottom: 1px solid var(--warning-border);
+        }
+
+        tr.status-red {
+            background-color: var(--danger-bg);
+            border-left: 4px solid var(--danger-color);
+        }
+        tr.status-red:hover {
+            background-color: rgba(231, 76, 60, 0.18);
+        }
+        tr.status-red td {
+            border-bottom: 1px solid var(--danger-border);
+        }
+
+        /* Píldora de estado */
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .badge.green {
+            background-color: rgba(46, 204, 113, 0.2);
+            color: #58d68d;
+            border: 1px solid var(--success-color);
+        }
+
+        .badge.orange {
+            background-color: rgba(241, 196, 15, 0.2);
+            color: #f4d03f;
+            border: 1px solid var(--warning-color);
+        }
+
+        .badge.red {
+            background-color: rgba(231, 76, 60, 0.2);
+            color: #f1948a;
+            border: 1px solid var(--danger-color);
+        }
+
+        .date-col {
+            font-weight: 600;
+            color: var(--text-primary);
+            white-space: nowrap;
+        }
+
+        .person-col {
+            font-weight: 600;
+            color: #38bdf8;
+            white-space: nowrap;
+        }
+
+        .details-col {
+            color: var(--text-primary);
+        }
+
+        .response-col {
+            color: #cbd5e1;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>ZETAK @ San Mamés | Contexto del Hilo de Correos</h1>
+        <p class="subtitle">Historial de solicitudes técnicas, operativas y de infraestructura extraído de los hilos de Patri.</p>
+    </header>
+
+    <div class="legend">
+        <div class="legend-item">
+            <span class="dot green"></span>
+            <span>Respondida / Solucionada</span>
+        </div>
+        <div class="legend-item">
+            <span class="dot orange"></span>
+            <span>En proceso / Pendiente</span>
+        </div>
+        <div class="legend-item">
+            <span class="dot red"></span>
+            <span>Denegada / Inviable</span>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th>Fecha Petición</th>
+                    <th>Solicitante</th>
+                    <th>Desarrollo de la Solicitud</th>
+                    <th>Fecha Respuesta</th>
+                    <th>Respuesta por:</th>
+                    <th>Desarrollo de la Respuesta</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Hito 1 -->
+                <tr class="status-green">
+                    <td class="date-col">16 de Enero de 2026</td>
+                    <td class="person-col">Wero Edge</td>
+                    <td class="details-col">Solicita confirmación de la implantación de estructuras de suelo para el escenario (Layher y torres) y adjunta dossier apalabrado de escenario.</td>
+                    <td class="date-col">19 de Enero de 2026</td>
+                    <td class="person-col">Isabel Del Moral</td>
+                    <td class="response-col">Confirma que están redefiniendo el escenario para salir del formato estándar de festival (backdrop y clearance de 14m). Pide aguantar la reserva técnica hasta el jueves 22. Wero acepta.</td>
+                    <td><span class="badge green">Solucionada</span></td>
+                </tr>
+
+                <!-- Hito 2 -->
+                <tr class="status-green">
+                    <td class="date-col">23 de Enero de 2026</td>
+                    <td class="person-col">Isabel Del Moral</td>
+                    <td class="details-col">Propone 3 opciones de escenario (Pantalla 40x15m tipo Taylor Swift, Pantalla adelantada, o Pantallas central + laterales de 20x10m) y consulta viabilidad de grúa y cargas.</td>
+                    <td class="date-col">23 de Enero de 2026</td>
+                    <td class="person-col">Wero Edge</td>
+                    <td class="response-col">Responde que para la primera opción necesita planos de cargas para enviárselo a StageCo. Para la grúa, confirma que no hay problema si no invade zona de evacuación.</td>
+                    <td><span class="badge green">Respondida</span></td>
+                </tr>
+
+                <!-- Hito 3 -->
+                <tr class="status-green">
+                    <td class="date-col">27 de Enero de 2026</td>
+                    <td class="person-col">Wero Edge</td>
+                    <td class="details-col">Solicita fotos del cubrimiento de gradas (TNT) usado en Fito para validar cómo realizar el aforamiento estético de butacas.</td>
+                    <td class="date-col">27 de Enero de 2026</td>
+                    <td class="person-col">Patricia Lorenzo</td>
+                    <td class="response-col">Aclara que no fue toda la trasera, sino solo las 4 primeras filas de todo el campo más bajadas de cables utilizando TNT. Wero confirma que le cuadra y ya está contemplado (filas no vendidas).</td>
+                    <td><span class="badge green">Solucionada</span></td>
+                </tr>
+
+                <!-- Hito 4 -->
+                <tr class="status-green">
+                    <td class="date-col">24 de Febrero de 2026</td>
+                    <td class="person-col">Patricia Lorenzo</td>
+                    <td class="details-col">Contacta con Iván García (Realización/Cámaras) para presentarse como Productora Técnico-Artística y solicita definir el espacio que ocuparán las cámaras en pista (andamios, tarimas, etc.).</td>
+                    <td class="date-col">26 de Febrero de 2026</td>
+                    <td class="person-col">Patricia Lorenzo</td>
+                    <td class="response-col">Tras coordinarse por WhatsApp, Patri le facilita a Iván el plano CAD actualizado con la implantación del escenario a esa fecha para comenzar su modelado de cámaras.</td>
+                    <td><span class="badge green">Respondida</span></td>
+                </tr>
+
+                <!-- Hito 5 -->
+                <tr class="status-green">
+                    <td class="date-col">28 de Febrero de 2026</td>
+                    <td class="person-col">Patricia Lorenzo</td>
+                    <td class="details-col">Envía dudas operativas a Wero: viabilidad de pintar las grúas de negro, si hay estudio de sonido para la PA/outfills y la reubicación de gradas por visuales.</td>
+                    <td class="date-col">28 de Febrero de 2026</td>
+                    <td class="person-col">Wero Edge</td>
+                    <td class="response-col">Confirma que es excelente idea pintar las grúas de negro. Comenta que espera el plano de sonido de Jordi y que en ticketing se inhabilitaron las primeras filas para evitar obstrucciones.</td>
+                    <td><span class="badge green">Solucionada</span></td>
+                </tr>
+
+                <!-- Hito 6 -->
+                <tr class="status-green">
+                    <td class="date-col">03 de Marzo de 2026</td>
+                    <td class="person-col">Jon Arratibel</td>
+                    <td class="details-col">Expresa alta preocupación por la visibilidad reducida en gradas inferiores que afectaría a unas 5.156 personas por día. Solicita buscar alternativas (retrasar o ladear pantallas).</td>
+                    <td class="date-col">03 de Marzo de 2026</td>
+                    <td class="person-col">Patricia Lorenzo</td>
+                    <td class="response-col">Informa que ya están trabajando en reubicar el aforo en las zonas de las pantallas laterales para garantizar la visibilidad de los primeros sectores y mandarán simulación en breve.</td>
+                    <td><span class="badge green">Solucionada</span></td>
+                </tr>
+
+                <!-- Hito 7 -->
+                <tr class="status-green">
+                    <td class="date-col">04 de Marzo de 2026</td>
+                    <td class="person-col">Patricia Lorenzo</td>
+                    <td class="details-col">Envía propuesta de luces y CAD. Pide confirmación sobre la ubicación de la cocina de "la fiesta" y el andamio Layher (quitar ménsulas).</td>
+                    <td class="date-col">05 de Marzo de 2026</td>
+                    <td class="person-col">Wero Edge</td>
+                    <td class="response-col">Informa que Mateco puede proveer una mesa elevadora (pero de menos de 2m). Anota reubicaciones y solicita separar el plano de luces en "stage" y "fuera de escena" para acometidas eléctricas.</td>
+                    <td><span class="badge green">Respondida</span></td>
+                </tr>
+
+                <!-- Hito 8 -->
+                <tr class="status-green">
+                    <td class="date-col">06 de Marzo de 2026</td>
+                    <td class="person-col">Iván García</td>
+                    <td class="details-col">Facilita el plano de cámaras y ópticas (tarimas, Spider cam, etc.). Sugiere contratar un solo proveedor de cámaras y pide contacto del estadio y de la gente de FX y RA.</td>
+                    <td class="date-col">06 de Marzo de 2026</td>
+                    <td class="person-col">Wero Edge</td>
+                    <td class="response-col">Agradece la concreción e indica que queda pendiente que se marque en el plano las tiradas de cable, necesidades de pasacables, corriente, WiFi e intercomunicación. Patri enviará contactos de FX y RA.</td>
+                    <td><span class="badge green">Respondida</span></td>
+                </tr>
+
+                <!-- Hito 9 -->
+                <tr class="status-orange">
+                    <td class="date-col">11 de Marzo de 2026</td>
+                    <td class="person-col">Patricia Lorenzo</td>
+                    <td class="details-col">Solicita a Wero especificaciones y referencias de la mesa elevadora que comentaron en la reunión para saber si es posible elevar a un actor/artista y cómo anclarla.</td>
+                    <td class="date-col">17 de Marzo de 2026</td>
+                    <td class="person-col">Wero Edge</td>
+                    <td class="response-col">Informa que no se ha movido nada en el diseño final desde la última actualización y que está a la espera de que Ticketing valide el aforo y la implantación para concretar.</td>
+                    <td><span class="badge orange">En proceso</span></td>
+                </tr>
+
+                <!-- Hito 10 -->
+                <tr class="status-green">
+                    <td class="date-col">17 de Marzo de 2026</td>
+                    <td class="person-col">Jordi Brugués</td>
+                    <td class="details-col">Solicita a Patricia el archivo de simulación 3D de iluminación (**WYSI**) para poder enviárselo a Fluge y empezar a planificar e implantar los trusses, motores y focos del show.</td>
+                    <td class="date-col">26 de Marzo de 2026</td>
+                    <td class="person-col">Patricia Lorenzo</td>
+                    <td class="response-col">Se disculpa por el retraso en el modelado y confirma que para el día 6 de abril estará el archivo WYSI finalizado. Jordi acepta y se lo traslada a Fluge para su organización.</td>
+                    <td><span class="badge green">Solucionada</span></td>
+                </tr>
+
+                <!-- Hito 11 -->
+                <tr class="status-green">
+                    <td class="date-col">08 de Abril de 2026</td>
+                    <td class="person-col">Patricia Lorenzo</td>
+                    <td class="details-col">Solicita a Wero las especificaciones técnicas de las pantallas interiores y exteriores de San Mamés para valorar si se pueden utilizar como apoyo del show de vídeo.</td>
+                    <td class="date-col">11 de Abril de 2026</td>
+                    <td class="person-col">Wero Edge</td>
+                    <td class="response-col">Informa que las pantallas del estadio cuestan 1500 €/día. Advierte del hándicap visual del videomarcador (uno enfrente, otro detrás). Recomienda usar la pantalla exterior y sustituir el tramex de rejillas.</td>
+                    <td><span class="badge green">Respondida</span></td>
+                </tr>
+
+                <!-- Hito 12 -->
+                <tr class="status-green">
+                    <td class="date-col">08 de Mayo de 2026</td>
+                    <td class="person-col">Patricia Lorenzo</td>
+                    <td class="details-col">Solicita añadir al plano e Infras: carpas para monitores, más planchadas en las alas para cápsulas criogénicas y esculturas. Pregunta fecha para colgar la pasarela variable para los láseres.</td>
+                    <td class="date-col">08 de Mayo de 2026</td>
+                    <td class="person-col">Wero Edge</td>
+                    <td class="response-col">Anota todas las peticiones de carpas, telas para aforar y las pasarelas. Detalla la posición de los FOHs (derecha sonido, izquierda iluminación/REA) para optimizar la visibilidad.</td>
+                    <td><span class="badge green">Respondida</span></td>
+                </tr>
+
+                <!-- Hito 13 -->
+                <tr class="status-orange">
+                    <td class="date-col">13 de Mayo de 2026</td>
+                    <td class="person-col">Wero Edge</td>
+                    <td class="details-col">Solicita de forma urgente a Patri toda la documentación para presentar el DRP (Dirección de Recursos Públicos) el día 19 de mayo: permisos de AENA para drones y láseres, homologaciones y seguro RC de Toni, escaletas de FX, etc.</td>
+                    <td class="date-col">13 de Mayo de 2026</td>
+                    <td class="person-col">Patricia Lorenzo</td>
+                    <td class="response-col">Responde que lo ha solicitado todo a Dani y a los proveedores. Denuncia que llevan 3 semanas insistiendo pero los proveedores no envían las certificaciones técnicas del material.</td>
+                    <td><span class="badge orange">Urgente</span></td>
+                </tr>
+
+                <!-- Hito 14 -->
+                <tr class="status-red">
+                    <td class="date-col">14 de Mayo de 2026</td>
+                    <td class="person-col">Patricia Lorenzo</td>
+                    <td class="details-col">Propone que el proveedor del estadio monte e instale la plataforma del escenario para músicos de tarima y recrecido trasero Layher de forma simultánea.</td>
+                    <td class="date-col">15 de Mayo de 2026</td>
+                    <td class="person-col">Wero Edge</td>
+                    <td class="response-col">Deniega la solicitud. Argumenta que el montaje se hace en días totalmente distintos y no dispondrá de los montadores de escaleras cuando se construya la grada del 15. Además, insiste en que la certificación debe ser del propio instalador.</td>
+                    <td><span class="badge red">Denegada</span></td>
+                </tr>
+
+                <!-- Hito 15 -->
+                <tr class="status-orange">
+                    <td class="date-col">25 de Mayo de 2026</td>
+                    <td class="person-col">Patricia Lorenzo</td>
+                    <td class="details-col">Solicita anclar un truss circular de 5m (ejemplo de dragontruss.com) directamente del techo de hormigón de San Mamés. Pregunta si el plano de rigging está actualizado por las cruces y pantalla trasera.</td>
+                    <td class="date-col">25 de Mayo de 2026</td>
+                    <td class="person-col">Jordi Brugués</td>
+                    <td class="response-col">Informa que Fluge no tiene el plano adaptado a los tirantes aún. Advierte que para anclar al hormigón del estadio se necesita un proyecto técnico súper detallado (pesos: pasarela variable 650kg, focos 637kg, actores 245kg) que deben enviar a Jose de San Mamés.</td>
+                    <td><span class="badge orange">En proceso</span></td>
+                </tr>
+
+                <!-- Hito 16 -->
+                <tr class="status-green">
+                    <td class="date-col">27 de Mayo de 2026</td>
+                    <td class="person-col">Wero Edge</td>
+                    <td class="details-col">Solicita a Iván García y Patri que le faciliten de forma urgente las necesidades de corriente y potencia marcadas en el plano para evitar errores de localización de las acometidas.</td>
+                    <td class="date-col">28 de Mayo de 2026</td>
+                    <td class="person-col">Patricia Lorenzo</td>
+                    <td class="response-col">Responde que ya recogió todas las necesidades de corriente de cámaras y realización y se las entregó a Francisco la semana pasada para su distribución técnica.</td>
+                    <td><span class="badge green">Solucionada</span></td>
+                </tr>
+
+                <!-- Hito 17 -->
+                <tr class="status-orange">
+                    <td class="date-col">28 de Mayo de 2026</td>
+                    <td class="person-col">Jordi Brugués</td>
+                    <td class="details-col">Pregunta si ha variado la propuesta de luces tras la modificación del escenario y si hay avances sobre la planificación y ubicación de la zona de discapacidad auditiva.</td>
+                    <td class="date-col">28 de Mayo de 2026</td>
+                    <td class="person-col">Patricia Lorenzo</td>
+                    <td class="response-col">Responde que sí variará ligeramente. Añade que Isa y Mikel ya están trabajando específicamente en el diseño para la zona de discapacidad auditiva y enviará la lista completa en breve.</td>
+                    <td><span class="badge orange">En proceso</span></td>
+                </tr>
+
+                <!-- Hito 18 -->
+                <tr class="status-orange">
+                    <td class="date-col">28 de Mayo de 2026 (12:48)</td>
+                    <td class="person-col">Patricia Lorenzo</td>
+                    <td class="details-col">Reporta un problema crítico de última hora: las "trompas" se niegan en rotundo a subir por las escaleras actuales. Solicita rediseñar las escaleras tal y como se hicieron en Mitoaroa I (las cuales fabricó Samu) e incluye links de descarga 3D.</td>
+                    <td class="date-col">-</td>
+                    <td class="person-col">-</td>
+                    <td class="response-col">No hay respuesta en el hilo (último correo recibido). Petición crítica pendiente de resolución en mesa técnica.</td>
+                    <td><span class="badge orange">Pendiente Crítico</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
