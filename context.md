@@ -16,7 +16,6 @@ Este proyecto es el **Dossier Operativo Digital** para la producción técnica y
 - `/sync_dossier.js`: Script de sincronización de archivos y assets.
 - `/Logistica/Logistica.md`: Detalle de transportes y alojamiento coordinado por Maddi.
 - `/PLANOS/PDFs/`: Carpeta crítica con toda la planimetría aprobada.
-- `/Emails/`: Contexto y documentación enviada a los diferentes departamentos técnicos.
 
 ## Estado Actual y Hitos
 - **Fase:** Operativa / Ejecución. Los horarios y proveedores están confirmados para las fechas del 8 al 24 de junio de 2026.
