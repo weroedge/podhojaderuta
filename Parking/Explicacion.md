@@ -1,4 +1,26 @@
-Solo seran admitidos en el ijterior del estadio los vehículos con su autorización para el día del montaje y desmontaje. estos no podrsn ser aparcados en el tunel o la zona de trabajo y deberan ir a pista. se debera dejar en zona visible el nombre, empresa y telefono del conductor
+# Parking Operations - Trucks & Buses
 
-Los vehículos personales de equipo, producción, artistas etc, deberán estacionar en el parking habilitado para ellos previa confirmacion por el departamento de logística y operaciones. para ello se debera escribir un email a sanmamesaccesos@gmail.com para solicitar la acreditacion con minimo 24hrs de antelacion al acceso.
+Detailed logistics of parking and services for the Linkin Park tour fleet.
 
+## 1. Fleet Breakdown
+A total fleet is expected consisting of:
+*   **21 Trucks (Trailers)**
+*   **9 Tourbuses (Sleepers)**
+
+### Arrival Schedule
+*   **June 17th:** Early arrival of **11 Trucks** and **1 Tourbus**.
+*   **Rest of the fleet:** According to general production schedule.
+
+## 2. Services in Parking Area
+The designated parking area will have the following services for drivers and crew:
+*   **Power Supply:** Power outlets available for all vehicles.
+*   **Sanitary Facilities:** Access to bathroom and shower modules (according to Production Layout).
+
+## 3. Distribution Plan
+Technical distribution of trucks, buses, and machinery in the parking area.
+
+![Parking Plan](./Logistica/Truck%20&%20Buses%20parking.pdf)
+
+---
+### 📥 Downloads
+* [Download Parking Plan (PDF)](./Logistica/Truck%20&%20Buses%20parking.pdf)

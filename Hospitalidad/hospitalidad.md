@@ -1,14 +1,36 @@
-## Responsable de Hospitalidad
-El encargado de liderar la zona de hospitalidad y coordinar los servicios asociados es **Xavi Payán**.
+# Hospitality & Catering Plan
 
-* Para cualquier consulta sobre hospitalidad, puedes localizar su contacto en la sección de [Contactos y Staff](#contactos) (puedes acceder directamente desde el menú).
-* **Consigna y Pertenencias:** Al llegar al estadio, deberás preguntar por él para que, en caso de que tengas asignado un espacio para dejar tus pertenencias, te indique su ubicación exacta.
+Information regarding the food service for the technical and artistic team at Auditorio Miguel Ríos.
 
-## Catering y Comedor
-El servicio de catering para el staff y producción se encuentra centralizado en el estadio:
+## 1. General Information
+*   **Location:** Catering tents (Production Area).
+*   **Supplier:** Cuchara de Palo.
+*   **Services:** Lunch and Dinner.
+*   **Notes:** Vegan options and allergen control available for all services.
 
-* **Ubicación:** Primer anillo (Planta 1), situado justo detrás del escenario.
-* **Calendario:** El servicio estará plenamente habilitado a partir del **día 16 de junio**.
-* **Horarios de Comida:** De 13:00 a 16:00 (1:00 PM - 4:00 PM).
-* **Horarios de Cena:** De 19:30 a 22:30 (7:30 PM - 10:30 PM).
-* **Acceso:** Es imprescindible presentar un **ticket físico** entregado por tu coordinador directo para acceder al comedor (sujeto a aprobación previa).
+## 2. Menu Summary
+
+### 🍴 LUNCH — Tuesday, June 23rd
+*   **Starters:** Mediterranean Salad, Waldorf Salad, Gazpacho with garnish, Minestrone Soup.
+*   **Mains:** Grilled chicken breast, Mixed meatballs in Spanish sauce, Monkfish tails with paprika dressing.
+*   **Sides:** Mac and Cheese with sun-dried tomato, Roasted potatoes, Grilled zucchini.
+*   **Vegan Option:** Green curry with vegetables and tofu.
+*   **Desserts:** Carrot cake, Fruit, yogurts and flan.
+
+### 🍽️ DINNER — Wednesday, June 24th
+*   **Starters:** Green salad with candied cherry tomatoes, Forest fruit gazpacho, Full salad buffet.
+*   **Mains:** Roasted turkey chops with chimichurri, Grilled chicken breast, Tuna marmitako.
+*   **Sides:** Wok rice with vegetables (Gluten Free), Mini potatoes gratin with parmesan, Roasted pumpkin cubes.
+*   **Vegan Option:** Sautéed Heura with vegetables.
+*   **Desserts:** Chocolate cake, Fruit, yogurts and flan.
+
+## 3. Layout & Distribution
+Technical distribution of dining areas (Local/Tour), kitchen and storage.
+
+![Catering Map](./Hospitalidad/Layout%20LP%20Rivas%20-%20Catering.pdf)
+
+---
+### 📥 Original Documents
+*   [Download Catering Plan (PDF)](./Hospitalidad/Layout%20LP%20Rivas%20-%20Catering.pdf)
+*   [Download LUNCH 06/23 Menu (PDF)](./Hospitalidad/2306%20LUNCH.pdf)
+*   [Download DINNER 06/24 Menu (PDF)](./Hospitalidad/2406%20DINNER.pdf)
