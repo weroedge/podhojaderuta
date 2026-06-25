@@ -1,17 +1,16 @@
 # Welcome
-Welcome and thank you for being part of the preparation for the Linkin Park event in Madrid.
 
-On this website you will find detailed and updated production information to check schedules, access, technical specs, suppliers, hospitality, logistics, and plans all in one place.
+Welcome and thank you for being part of the preparation for the Limp Bizkit event in Madrid, featuring special guests P.O.D. and Death by Romy.
 
-We have also gathered here the main requests and comments that have been worked on during the previous months of preparation, so that the entire team has a common and clear reference.
+On this website you will find detailed and updated production information to check schedules, access, technical specs, suppliers, hospitality, logistics, and plans in one place.
 
-# 📍 How to get to Auditorio Miguel Rios — Rivas-Vaciamadrid
-The venue is located at **Avenida de los Andes, s/n, 28529 Rivas-Vaciamadrid, Madrid**.
+We have also gathered here the main requests and comments that have been worked on during the previous weeks of preparation, so that the entire team has a common and clear reference.
 
-- **By Metro:** Line 9 (Paco de Lucia) + Commuter Train to Rivas-Vaciamadrid station.
-- **By Commuter Train (RENFE):** Line C-7 to Rivas-Vaciamadrid station, about 15 mins walk from the venue or by local taxi.
-- **By car from Madrid:** A-3 Highway (Valencia), exit 18 Rivas-Vaciamadrid. Follow signs to Auditorio Miguel Rios.
-- **Parking:** Available at the venue and surroundings. Check with the logistics department for production access.
+# 📍 How customers get to Movistar Arena — Madrid
 
-# 🗺️ Access Route
-![Route Detail](./Introduccion/Route%20detail.pdf)
+The venue is located at **Av. de Felipe II, s/n, 28009 Madrid, Spain**.
+
+- **By Metro:** Goya Station (Lines 2 and 4) or O'Donnell Station (Line 6).
+- **By Bus:** Lines 15, 21, 26, 43, 53, 61, 63, C1, C2.
+- **By car:** Located in the city center. Public transport is highly recommended due to high traffic.
+- **Parking:** Public parking available nearby (e.g., Felipe II parking).

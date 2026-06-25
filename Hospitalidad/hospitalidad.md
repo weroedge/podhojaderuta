@@ -1,36 +1,32 @@
-# Hospitality & Catering Plan
+# Hospitality & Dressing Rooms
 
-Information regarding the food service for the technical and artistic team at Auditorio Miguel Ríos.
+Summary of catering, dressing room allocations, and rider adjustments based on recent communications.
 
-## 1. General Information
-*   **Location:** Catering tents (Production Area).
-*   **Supplier:** Cuchara de Palo.
-*   **Services:** Lunch and Dinner.
-*   **Notes:** Vegan options and allergen control available for all services.
+## Dressing Rooms & Facilities
+- **Location:** Level -1 (Stage is at Level -2).
+- **Artist Dressing Rooms:** 5 rooms (A, B, C, D, E). Fully furnished with fridge, couches, coffee tables, TV, showers, and mirrors. Exclusive use.
+- **Support Acts:** 4 locker rooms available for P.O.D. and Death By Romy.
+- **Production Offices:** P3 & P4 are allocated for Artist Production (Level -2, next to the stage).
 
-## 2. Menu Summary
+## Catering Schedule & Menu Notes
+- **Breakfast:** For 15 pax until 11:00 AM. Includes bread selection, cold cuts, cheese, bacon and eggs, pastries, fruit, and coffee/tea.
+- **Lunch:** 12:00 PM – 3:30 PM.
+- **Dinner:** 5:00 PM – 8:30 PM. *(Note: Awaiting grilled meat details. Hake fish to be replaced with another meat option).*
 
-### 🍴 LUNCH — Tuesday, June 23rd
-*   **Starters:** Mediterranean Salad, Waldorf Salad, Gazpacho with garnish, Minestrone Soup.
-*   **Mains:** Grilled chicken breast, Mixed meatballs in Spanish sauce, Monkfish tails with paprika dressing.
-*   **Sides:** Mac and Cheese with sun-dried tomato, Roasted potatoes, Grilled zucchini.
-*   **Vegan Option:** Green curry with vegetables and tofu.
-*   **Desserts:** Carrot cake, Fruit, yogurts and flan.
+## Personnel & Rider Adjustments
+- **Runner:** Required starting at 8:00 AM.
+- **Towels:** 10 black bath towels required.
+- **Wardrobe:** Iron & Ironing board are strictly necessary.
+- **Beverages:** 
+  - Powerade instead of Gatorade.
+  - Corona instead of Modelo.
+  - Full-fat milk accepted (no half-and-half).
+  - Tonic water or soda water required.
 
-### 🍽️ DINNER — Wednesday, June 24th
-*   **Starters:** Green salad with candied cherry tomatoes, Forest fruit gazpacho, Full salad buffet.
-*   **Mains:** Roasted turkey chops with chimichurri, Grilled chicken breast, Tuna marmitako.
-*   **Sides:** Wok rice with vegetables (Gluten Free), Mini potatoes gratin with parmesan, Roasted pumpkin cubes.
-*   **Vegan Option:** Sautéed Heura with vegetables.
-*   **Desserts:** Chocolate cake, Fruit, yogurts and flan.
+## Documents & Maps
 
-## 3. Layout & Distribution
-Technical distribution of dining areas (Local/Tour), kitchen and storage.
+![Dressing Rooms Map](./Hospitalidad/Dressing%20rooms%20map.pdf)
 
-![Catering Map](./Hospitalidad/Layout%20LP%20Rivas%20-%20Catering.pdf)
+![Lunch Menu](./Hospitalidad/0107%20LUNCH.pdf)
 
----
-### 📥 Original Documents
-*   [Download Catering Plan (PDF)](./Hospitalidad/Layout%20LP%20Rivas%20-%20Catering.pdf)
-*   [Download LUNCH 06/23 Menu (PDF)](./Hospitalidad/2306%20LUNCH.pdf)
-*   [Download DINNER 06/24 Menu (PDF)](./Hospitalidad/2406%20DINNER.pdf)
+![Dinner Menu](./Hospitalidad/0107%20DINNER.pdf)

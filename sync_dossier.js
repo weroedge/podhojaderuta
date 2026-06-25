@@ -33,7 +33,7 @@ function markdownToHtml(md) {
       const url = src.replace(/&amp;/g, "&");
       if (url.toLowerCase().endsWith('.pdf')) {
         return `<div style="margin-top: 14px; border-radius: 10px; overflow: hidden; border: 1px solid var(--line); background: #000;">
-                  <iframe src="${url}" width="100%" height="600px" style="border:none; display:block;"></iframe>
+                  <iframe src="${url}#view=FitH" width="100%" style="height: 100vh; min-height: 1000px; border:none; display:block;"></iframe>
                 </div>`;
       }
       return `<img src="${url}" alt="${alt}" style="max-width:100%; border-radius: 10px; margin-top: 14px; border: 1px solid var(--line);">`;
@@ -83,6 +83,12 @@ function markdownToHtml(md) {
         i++;
       }
       html.push(`<div class="table-wrap"><table><thead><tr>${headers.map(h => `<th>${h}</th>`).join("")}</tr></thead><tbody>${rows.join("")}</tbody></table></div>`);
+      continue;
+    }
+
+    if (line.startsWith("<")) {
+      html.push(line);
+      i++;
       continue;
     }
 
@@ -149,22 +155,22 @@ function generateProduccionContent() {
     const files = fs.readdirSync(folderPath);
     let folderContent = `<h3>${folder}</h3>`;
     let hasContent = false;
+    let allMdContent = "";
     const mdFiles = files.filter(f => f.toLowerCase().endsWith(".md"));
     for (const mdFile of mdFiles) {
       const mdContent = fs.readFileSync(path.join(folderPath, mdFile), "utf8");
+      allMdContent += mdContent;
       folderContent += `<div style="margin-bottom: 20px; border-left: 2px solid var(--accent); padding-left: 15px;">
-                          <h4 style="color: var(--muted); font-size: 14px; margin-bottom: 10px;">📄 ${mdFile}</h4>
                           ${markdownToHtml(mdContent)}
                         </div>`;
       hasContent = true;
     }
-    const pdfFiles = files.filter(f => f.toLowerCase().endsWith(".pdf"));
+    const pdfFiles = files.filter(f => f.toLowerCase().endsWith(".pdf") && !allMdContent.includes(encodeURIComponent(f)) && !allMdContent.includes("/" + f));
     for (const pdfFile of pdfFiles) {
       const pdfUrl = `./Production/${encodeURIComponent(folder)}/${encodeURIComponent(pdfFile)}`;
       folderContent += `<div style="margin-bottom: 20px;">
-                          <h4 style="color: var(--muted); font-size: 14px; margin-bottom: 10px;">📎 ${pdfFile}</h4>
                           <div style="border-radius: 10px; overflow: hidden; border: 1px solid var(--line); background: #000;">
-                            <iframe src="${pdfUrl}" width="100%" height="400px" style="border:none; display:block;"></iframe>
+                            <iframe src="${pdfUrl}#view=FitH" width="100%" style="height: 100vh; min-height: 1000px; border:none; display:block;"></iframe>
                           </div>
                           <p style="margin-top: 8px;"><a href="${pdfUrl}" target="_blank" style="color: var(--accent); font-size: 13px;">Descargar PDF</a></p>
                         </div>`;
@@ -189,13 +195,13 @@ function run() {
     if (section.autoPdf) {
       const sectionDir = path.dirname(section.file);
       const files = fs.readdirSync(sectionDir);
-      const pdfFiles = files.filter(f => f.toLowerCase().endsWith(".pdf"));
+      const pdfFiles = files.filter(f => f.toLowerCase().endsWith(".pdf") && !md.includes(encodeURIComponent(f)) && !md.includes("/" + f));
       for (const pdfFile of pdfFiles) {
         const pdfUrl = `./${path.basename(sectionDir)}/${encodeURIComponent(pdfFile)}`;
         htmlContent += `\n<div class="card"><div style="margin-bottom: 20px;">
                           <h4 style="color: var(--muted); font-size: 14px; margin-bottom: 10px;">📎 ${pdfFile}</h4>
                           <div style="border-radius: 10px; overflow: hidden; border: 1px solid var(--line); background: #000;">
-                            <iframe src="${pdfUrl}" width="100%" height="400px" style="border:none; display:block;"></iframe>
+                            <iframe src="${pdfUrl}#view=FitH" width="100%" style="height: 100vh; min-height: 1000px; border:none; display:block;"></iframe>
                           </div>
                           <p style="margin-top: 8px;"><a href="${pdfUrl}" target="_blank" style="color: var(--accent); font-size: 13px;">Descargar PDF</a></p>
                         </div></div>`;

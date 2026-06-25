@@ -1,26 +1,11 @@
-# Parking Operations - Trucks & Buses
+# Parking & Access
 
-Detailed logistics of parking and services for the Linkin Park tour fleet.
+A parking space has been reserved on Fuente del Berro street, right in front of Door 51. This door will be used as the artist entrance and will be active starting at 6:30 AM.
 
-## 1. Fleet Breakdown
-A total fleet is expected consisting of:
-*   **21 Trucks (Trailers)**
-*   **9 Tourbuses (Sleepers)**
+The tour must provide the license plates of the vehicles bringing the artist's equipment in advance to ensure access.
 
-### Arrival Schedule
-*   **June 17th:** Early arrival of **11 Trucks** and **1 Tourbus**.
-*   **Rest of the fleet:** According to general production schedule.
+## Maps & References
 
-## 2. Services in Parking Area
-The designated parking area will have the following services for drivers and crew:
-*   **Power Supply:** Power outlets available for all vehicles.
-*   **Sanitary Facilities:** Access to bathroom and shower modules (according to Production Layout).
+![Door 51](./Escenario/Door%2051.png)
 
-## 3. Distribution Plan
-Technical distribution of trucks, buses, and machinery in the parking area.
-
-![Parking Plan](./Logistica/Truck%20&%20Buses%20parking.pdf)
-
----
-### 📥 Downloads
-* [Download Parking Plan (PDF)](./Logistica/Truck%20&%20Buses%20parking.pdf)
+![Wizink PARKING](./Parking/Wizink%20PARKING.pdf)
