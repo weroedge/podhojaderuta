@@ -7,7 +7,7 @@ Summary of catering, dressing room allocations, and rider adjustments based on r
 ## Dressing Rooms & Facilities
 
 - **Location:** Level -1 (Stage is at Level -2).
-- **Artist Dressing Rooms:** 5 rooms (A, B, C, D, E). Fully furnished with fridge, couches, coffee tables, TV, showers, and mirrors. Exclusive use.
+- **Artist Dressing Rooms:** 5 rooms (A, B, C, D, E). Fully furnished with fridge, couches, coffee tables, TV, showers, and mirrors. Exclusive use (No Dimmable Lights).
 - **Support Acts:** 3 locker rooms available for P.O.D. and Death By Romy & crew
 - **Production Offices:** P3 & P4 are allocated for Artist Production (Level -2, next to the stage).
 
