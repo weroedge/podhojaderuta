@@ -378,10 +378,77 @@
       margin-top: 8px;
     }
 
-    .md h1, .md h2, .md h3 {
+    .md h1 {
+      font-size: 28px;
+      background: linear-gradient(90deg, #a855f7, #00ccff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 10px;
       font-family: "Space Grotesk", sans-serif;
-      margin: 0 0 10px;
+    }
+
+    .md h1:first-child {
+      margin-top: 0;
+    }
+
+    .md h2 {
+      font-size: 22px;
       color: var(--accent);
+      margin-top: 30px;
+      margin-bottom: 15px;
+      font-family: "Space Grotesk", sans-serif;
+    }
+
+    .md h3 {
+      font-size: 18px;
+      color: var(--accent);
+      margin-top: 20px;
+      margin-bottom: 10px;
+      font-family: "Space Grotesk", sans-serif;
+    }
+
+    .md p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 20px;
+    }
+
+    .md ul {
+      list-style-type: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 20px;
+      margin-bottom: 40px;
+    }
+
+    .md li {
+      background: rgba(255, 255, 255, 0.03);
+      border-left: 3px solid var(--accent);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      font-size: 15px;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.9);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-right: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: transform 0.2s;
+    }
+
+    .md li:hover {
+      transform: translateX(4px);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .md strong {
+      color: var(--accent);
+      font-weight: 600;
     }
 
     .md pre {
@@ -435,70 +502,6 @@
       border: none;
       padding: 0;
       box-shadow: none;
-    }
-
-    #tab-introduccion h1 {
-      font-size: 28px;
-      background: linear-gradient(90deg, #a855f7, #00ccff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-top: 40px;
-      margin-bottom: 20px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      padding-bottom: 10px;
-      font-family: "Space Grotesk", sans-serif;
-    }
-    
-    #tab-introduccion h1:first-child {
-      margin-top: 0;
-    }
-
-    #tab-introduccion p {
-      font-size: 16px;
-      line-height: 1.8;
-      color: rgba(255, 255, 255, 0.85);
-      margin-bottom: 20px;
-    }
-    
-    #tab-introduccion p:nth-of-type(1),
-    #tab-introduccion p:nth-of-type(2) {
-      font-size: 18px;
-      font-weight: 300;
-      color: #fff;
-    }
-
-    #tab-introduccion ul {
-      list-style-type: none;
-      padding: 0;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-      margin-top: 20px;
-      margin-bottom: 40px;
-    }
-
-    #tab-introduccion li {
-      background: rgba(255, 255, 255, 0.03);
-      border-left: 3px solid var(--accent);
-      padding: 16px 20px;
-      border-radius: 0 8px 8px 0;
-      font-size: 15px;
-      line-height: 1.5;
-      color: rgba(255, 255, 255, 0.9);
-      border-top: 1px solid rgba(255,255,255,0.05);
-      border-right: 1px solid rgba(255,255,255,0.05);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      transition: transform 0.2s;
-    }
-    
-    #tab-introduccion li:hover {
-      transform: translateX(4px);
-      background: rgba(255, 255, 255, 0.06);
-    }
-
-    #tab-introduccion strong {
-      color: var(--accent);
-      font-weight: 600;
     }
     
     #tab-introduccion img {
