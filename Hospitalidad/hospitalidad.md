@@ -20,7 +20,10 @@ Summary of catering, dressing room allocations, and rider adjustments based on r
 ## Personnel & Rider Adjustments
 
 - **Runner:** Required starting at 8:00 AM.
-- **Towels:** 10 black bath towels required.
+- **Towels:**
+  - 10 black shower towels
+  - 80 white shower towels
+  - 40 stage towels
 - **Wardrobe:** Iron & Ironing board are strictly necessary.
 - **Beverages:**
   - Powerade instead of Gatorade.
