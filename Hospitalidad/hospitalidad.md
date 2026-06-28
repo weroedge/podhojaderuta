@@ -7,29 +7,8 @@ Summary of catering, dressing room allocations, and rider adjustments based on r
 ## Dressing Rooms & Facilities
 
 - **Location:** Level -1 (Stage is at Level -2).
-- **Artist Dressing Rooms:** 5 rooms (A, B, C, D, E). Fully furnished with fridge, couches, coffee tables, TV, showers, and mirrors. Exclusive use (No Dimmable Lights).
-- **Support Acts:** 3 locker rooms available for P.O.D. and Death By Romy & crew
-- **Production Offices:** P3 & P4 are allocated for Artist Production (Level -2, next to the stage).
+- **Support Acts:** 4 locker rooms available for P.O.D. and Death By Romy & crew
 
-## Catering Schedule & Menu Notes
-
-- **Breakfast:** For 15 pax until 11:00 AM. Includes bread selection, cold cuts, cheese, bacon and eggs, pastries, fruit, and coffee/tea.
-- **Lunch:** 12:00 PM – 3:30 PM.
-- **Dinner:** 5:00 PM – 8:30 PM. _(Note: Awaiting grilled meat details. Hake fish to be replaced with another meat option)._
-
-## Personnel & Rider Adjustments
-
-- **Runner:** Required starting at 8:00 AM.
-- **Towels:**
-  - 10 black shower towels
-  - 80 white shower towels
-  - 40 stage towels
-- **Wardrobe:** Iron & Ironing board are strictly necessary.
-- **Beverages:**
-  - Powerade instead of Gatorade.
-  - Corona instead of Modelo.
-  - Full-fat milk accepted (no half-and-half).
-  - Tonic water or soda water required.
 
 ## Documents & Maps
 
