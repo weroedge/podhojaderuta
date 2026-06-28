@@ -7,7 +7,6 @@ Structural limitations and hanging points for the Movistar Arena roof.
 - **Weight Limits:** Maximum load capacities per beam and overall roof limits.
 - **Clearance:** Trim heights required for the lighting trusses and PA hangs.
 
-_Please review **LIMP BIZKIT MADRID-LIGHTING V2.pdf** for the updated rigging plot and weight distribution calculations tailored to the venue's grid._
 
 ## Point Loads Table
 

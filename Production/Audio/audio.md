@@ -1,23 +1,23 @@
-# Audio Requirements & Communications
+# Audio Requirements
 
-Detailed audio specifications and email correspondence regarding the PA system and control.
+Detailed audio specifications and equipment provisioning based on P.O.D.'s rider.
 
-## Overview
-This section includes the latest communications with the audio vendor and touring team. It covers:
-- System design and PA deployment requirements.
-- Front of House (FOH) and Monitor console specifications.
-- RF coordination and frequency management.
+## Artist Carries (P.O.D.)
 
+- **FOH Console:** Behringer WING compact
+- **MON Console:** M32c / DL32 (MON Engineer: individual ipad)
+- **Mics:** Artist carries all microphones
 
-## Equipment Provisioning
+## Locally Provided / Needed Equipment
 
-| Item / Requirement | Limp Bizkit | Locally Provided |
-|---|:---:|:---:|
-| PA System & Subs | | ✔️ |
-| Wedges | | ✔️ (12x) |
-| Side Fills | | ✔️ |
-| HMA Fibre Snake (32 single to FOH) | | ✔️ |
-| Power: 63A 3-Phase (Monitor World) | | ✔️ |
-| Control (Consoles) | ✔️ | |
-| Microphones | ✔️ | |
-| RF Equipment | ✔️ | |
+| Item / Requirement | Details |
+|---|---|
+| **FOH Setup** | 6' Table for FOH |
+| **FOH Snake** | Shielded Cat5 between Stage and FOH (300' max) |
+| **Wedges** | 2 Downstage Left, per stageplot |
+| **SUB** | 1 Drum Sub for drummer on ears |
+| **IEM Transmitters**| 4 stereo IEM transmitters (Shure PSM or Senn G4) |
+| **Mic Stands** | 3 Tall Booms, 1 Short Boom, 1 Straight Stand w/ Round Base |
+| **Cabling** | 20x 20' XLR cables, 10x 10' XLR cables |
+| **Subsnakes** | 1x 50', 8 channel |
+| **Power** | 5x 120v drops for Backline Power |
